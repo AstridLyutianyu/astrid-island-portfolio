@@ -283,7 +283,7 @@ const Index = () => {
         <div className="grid md:grid-cols-2 gap-2 mb-2">
           <Reveal delay={50}>
             <ProductCard
-              id-section="now"
+              id="now"
               eyebrow="Now"
               title="我在持续关注的事。"
               sub="三个让我保持新鲜感、也塑造看世界方式的方向。"
