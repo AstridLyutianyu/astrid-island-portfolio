@@ -9,7 +9,7 @@
     --background: 0 0% 100%;
     --foreground: 0 0% 6%;
 
-    --page: 0 0% 96%;          /* apple page bg between sections */
+    --page: 0 0% 100%;         /* pure white background */
     --surface: 0 0% 100%;
     --surface-dark: 0 0% 0%;
 
