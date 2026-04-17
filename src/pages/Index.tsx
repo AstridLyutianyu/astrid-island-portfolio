@@ -311,7 +311,7 @@ const Index = () => {
               title="我在持续关注的事。"
               sub="三个让我保持新鲜感、也塑造看世界方式的方向。"
               secondaryCta={{ label: "了解更多", href: "#about" }}
-              className="h-[560px]"
+              className="pb-12 h-full"
             >
               <FocusVisual />
             </ProductCard>
