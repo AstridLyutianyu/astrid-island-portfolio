@@ -136,15 +136,13 @@ const PortraitVisual = () => (
 const SkillsVisual = () => {
   const skills = ["运营管理", "社群运营", "新媒体", "AI 应用", "内容策划", "项目协作"];
   return (
-    <div className="relative mt-10 px-6 pb-14">
-      <div className="flex flex-wrap items-center justify-center gap-3">
+    <div className="mt-10 px-6 pb-14">
+      <div className="flex flex-wrap items-center justify-center gap-2.5">
         {skills.map((s, i) => (
           <span
             key={s}
             style={{ animationDelay: `${i * 80}ms` }}
-            className={`animate-fade-up rounded-full bg-white border border-border px-5 py-2.5 text-[17px] font-medium text-foreground shadow-[var(--shadow-card)] ${
-              i % 3 === 0 ? "text-xl px-6 py-3" : ""
-            }`}
+            className="animate-fade-up rounded-full bg-[hsl(0_0%_96%)] px-5 py-2.5 text-[15px] font-medium text-foreground"
           >
             {s}
           </span>
@@ -156,22 +154,23 @@ const SkillsVisual = () => {
 
 const FocusVisual = () => {
   const items = [
-    { emoji: "✨", label: "AI 与女性社群" },
-    { emoji: "📓", label: "新媒体培训" },
-    { emoji: "🌿", label: "自然与人" },
+    { label: "AI 与女性社群", desc: "AI 工具如何赋能女性创造者" },
+    { label: "新媒体培训", desc: "持续学习内容策略与表达" },
+    { label: "自然与人", desc: "走到自然里，慢下来" },
   ];
   return (
-    <div className="mt-10 grid grid-cols-3 gap-3 px-6 pb-12 max-w-md mx-auto">
+    <div className="mt-10 px-8 pb-12 max-w-md mx-auto text-left space-y-5">
       {items.map((it, i) => (
         <div
           key={it.label}
           style={{ animationDelay: `${i * 100}ms` }}
-          className="animate-fade-up flex flex-col items-center gap-2 rounded-2xl bg-white border border-border py-5 px-2"
+          className="animate-fade-up flex items-start gap-4"
         >
-          <span className="text-3xl">{it.emoji}</span>
-          <span className="text-[13px] text-muted-foreground text-center leading-tight">
-            {it.label}
-          </span>
+          <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[hsl(var(--apple-blue))] shrink-0" />
+          <div>
+            <div className="text-[16px] font-medium text-foreground">{it.label}</div>
+            <div className="text-[14px] text-muted-foreground mt-0.5">{it.desc}</div>
+          </div>
         </div>
       ))}
     </div>
@@ -204,20 +203,15 @@ const IslandVisual = () => (
 );
 
 const ContactVisual = () => (
-  <div className="mt-8 pb-12 px-6">
-    <div className="mx-auto max-w-sm rounded-2xl bg-[hsl(0_0%_96%)] border border-border p-6 text-left space-y-4">
-      <div>
-        <div className="text-[13px] text-muted-foreground mb-1">微信</div>
-        <div className="text-[19px] font-medium text-foreground tracking-wide">
-          ltyuu_
-        </div>
+  <div className="mt-10 pb-12 px-6">
+    <div className="mx-auto max-w-sm flex flex-col gap-5 items-center">
+      <div className="text-center">
+        <div className="text-[12px] text-muted-foreground mb-1">微信</div>
+        <div className="text-[19px] font-medium text-foreground tracking-wide">ltyuu_</div>
       </div>
-      <div className="h-px bg-border" />
-      <div>
-        <div className="text-[13px] text-muted-foreground mb-1">邮箱</div>
-        <div className="text-[19px] font-medium text-foreground">
-          hello@astrid.me
-        </div>
+      <div className="text-center">
+        <div className="text-[12px] text-muted-foreground mb-1">邮箱</div>
+        <div className="text-[19px] font-medium text-foreground">hello@astrid.me</div>
       </div>
     </div>
   </div>
@@ -264,13 +258,12 @@ const Index = () => {
 
       {/* Grid of product-style cards */}
       <main className="px-2 md:px-4 pb-4">
-        {/* Row 1: About — split layout, photo on the right with depth */}
+        {/* Row 1: About — clean split, photo right */}
         <Reveal>
-          <article className="relative overflow-hidden rounded-[18px] bg-white mb-2 grid md:grid-cols-2 min-h-[560px] md:min-h-[640px]">
-            {/* Left: text */}
-            <div className="relative z-10 flex flex-col justify-center px-8 md:px-14 py-14 md:py-20 text-left">
+          <article className="rounded-[18px] bg-white mb-2 grid md:grid-cols-[1.1fr_0.9fr] gap-8 md:gap-12 items-center px-8 md:px-14 py-12 md:py-16">
+            <div className="text-left">
               <div className="apple-eyebrow text-[hsl(var(--apple-blue))] mb-3">About</div>
-              <h2 className="apple-card-title mb-4 text-foreground">
+              <h2 className="apple-card-title mb-5 text-foreground">
                 认识一下，<br />
                 我是 Astrid。
               </h2>
@@ -279,7 +272,6 @@ const Index = () => {
                 关注 AI、女性社群、新媒体表达，也愿意走到自然里去。
               </p>
 
-              {/* mini facts */}
               <div className="grid grid-cols-3 gap-4 mb-8 max-w-md">
                 {[
                   { k: "城市", v: "广州" },
@@ -299,44 +291,13 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Right: portrait with decorative layers */}
-            <div className="relative h-[420px] md:h-auto bg-gradient-to-br from-[hsl(220_25%_94%)] via-[hsl(210_30%_92%)] to-[hsl(200_40%_88%)] overflow-hidden">
-              {/* soft blob */}
-              <div className="absolute -top-16 -right-16 w-72 h-72 rounded-full bg-[hsl(211_100%_70%/0.18)] blur-3xl" />
-              <div className="absolute bottom-10 -left-10 w-56 h-56 rounded-full bg-[hsl(45_100%_75%/0.25)] blur-3xl" />
-
-              {/* grid lines for design feel */}
-              <svg className="absolute inset-0 w-full h-full opacity-[0.06]" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
-                    <path d="M 32 0 L 0 0 0 32" fill="none" stroke="currentColor" strokeWidth="1" />
-                  </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#grid)" />
-              </svg>
-
-              {/* portrait card, offset & tilted slightly */}
-              <div className="absolute inset-0 flex items-center justify-center p-8 md:p-12">
-                <div className="relative">
-                  <div className="absolute -inset-3 rounded-[28px] bg-white/60 backdrop-blur-sm shadow-[0_20px_60px_-15px_hsl(0_0%_0%/0.15)] -rotate-3" />
-                  <div className="absolute -inset-1.5 rounded-[24px] bg-white shadow-[0_10px_30px_-10px_hsl(0_0%_0%/0.18)] rotate-1" />
-                  <img
-                    src={portrait}
-                    alt="Astrid 鱼仔"
-                    className="relative w-[220px] md:w-[280px] aspect-[4/5] object-cover rounded-[20px] shadow-[0_30px_60px_-20px_hsl(0_0%_0%/0.35)]"
-                    loading="eager"
-                  />
-                  {/* floating tag */}
-                  <div className="absolute -right-4 -bottom-4 bg-white rounded-2xl px-4 py-3 shadow-[0_10px_30px_-8px_hsl(0_0%_0%/0.2)] border border-border">
-                    <div className="text-[11px] text-muted-foreground">最近</div>
-                    <div className="text-[13px] font-semibold">环游海岛 🌊</div>
-                  </div>
-                  {/* small badge */}
-                  <div className="absolute -left-5 top-6 bg-[hsl(var(--apple-blue))] text-white rounded-full w-12 h-12 flex items-center justify-center text-[11px] font-medium shadow-lg rotate-[-8deg]">
-                    Hi 👋
-                  </div>
-                </div>
-              </div>
+            <div className="flex justify-center md:justify-end">
+              <img
+                src={portrait}
+                alt="Astrid 鱼仔"
+                className="w-full max-w-[320px] aspect-[4/5] object-cover rounded-[20px]"
+                loading="eager"
+              />
             </div>
           </article>
         </Reveal>
@@ -350,7 +311,7 @@ const Index = () => {
               title="我在持续关注的事。"
               sub="三个让我保持新鲜感、也塑造看世界方式的方向。"
               secondaryCta={{ label: "了解更多", href: "#about" }}
-              className="h-[560px]"
+              className="pb-12 h-full"
             >
               <FocusVisual />
             </ProductCard>
@@ -360,7 +321,7 @@ const Index = () => {
               eyebrow="Skills"
               title="我擅长的事。"
               sub="把复杂的事拆解、组织、推进，并让团队一起跑起来。"
-              className="h-[560px]"
+              className="pb-12 h-full"
             >
               <SkillsVisual />
             </ProductCard>
@@ -371,65 +332,36 @@ const Index = () => {
         <div id="now" className="-mt-2" />
         <div id="skills" className="-mt-2" />
 
-        {/* Row 3: Projects header card with decorative scene */}
+        {/* Row 3: Projects header — clean */}
         <Reveal>
           <ProductCard
             id="projects-head"
             eyebrow="Projects"
             title="最近做的几件事。"
             sub="一些正在推进或刚刚完成的项目，欢迎一起聊聊。"
-            className="h-[360px] mb-2"
-          >
-            <div className="absolute inset-x-0 bottom-0 h-[55%] pointer-events-none">
-              <div className="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-[hsl(210_40%_92%)] via-[hsl(210_40%_96%)] to-transparent" />
-              <div className="relative h-full max-w-2xl mx-auto">
-                {[
-                  { left: "15%", bottom: "30%", size: 14, color: "hsl(211 100% 45%)", delay: 0 },
-                  { left: "38%", bottom: "55%", size: 10, color: "hsl(340 80% 60%)", delay: 200 },
-                  { left: "55%", bottom: "25%", size: 18, color: "hsl(45 90% 55%)", delay: 400 },
-                  { left: "72%", bottom: "50%", size: 12, color: "hsl(160 60% 45%)", delay: 600 },
-                  { left: "85%", bottom: "35%", size: 8, color: "hsl(280 60% 60%)", delay: 800 },
-                ].map((d, i) => (
-                  <span
-                    key={i}
-                    style={{
-                      left: d.left,
-                      bottom: d.bottom,
-                      width: d.size,
-                      height: d.size,
-                      background: d.color,
-                      animationDelay: `${d.delay}ms`,
-                      boxShadow: `0 4px 20px -2px ${d.color}`,
-                    }}
-                    className="absolute rounded-full animate-fade-up"
-                  />
-                ))}
-                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 60" preserveAspectRatio="none">
-                  <path
-                    d="M 15 42 Q 26 20 38 27 T 55 45 T 72 30 T 85 39"
-                    fill="none"
-                    stroke="hsl(211 100% 45% / 0.3)"
-                    strokeWidth="0.3"
-                    strokeDasharray="1 1"
-                  />
-                </svg>
-              </div>
-            </div>
-          </ProductCard>
+            className="py-14 md:py-16 mb-2"
+          />
         </Reveal>
 
         {/* Projects: 3 cards */}
         <div id="projects" className="grid md:grid-cols-3 gap-2 mb-2">
           <Reveal delay={0}>
             <ProductCard
-              theme="dark"
               eyebrow="个人项目"
               title="环游城市海岛"
               sub="用一年时间走过城市周边的每一座海岛，把它们写成可分享的旅行笔记。"
               secondaryCta={{ label: "了解更多", href: "#" }}
-              className="h-[520px]"
+              className="pb-12"
             >
-              <IslandVisual />
+              <div className="mt-8 px-8 text-left">
+                <div className="text-[13px] text-muted-foreground mb-2">已走过</div>
+                <div className="text-[44px] font-semibold leading-none text-foreground">
+                  12<span className="text-[20px] text-muted-foreground font-normal"> / 24 座岛</span>
+                </div>
+                <div className="mt-4 h-1 rounded-full bg-[hsl(0_0%_92%)] overflow-hidden">
+                  <div className="h-full w-1/2 bg-[hsl(var(--apple-blue))] rounded-full" />
+                </div>
+              </div>
             </ProductCard>
           </Reveal>
           <Reveal delay={100}>
@@ -438,27 +370,19 @@ const Index = () => {
               title="AI × 女性社群"
               sub="策划线上线下活动，连接对 AI 感兴趣的女性创造者，沉淀工具与内容资产。"
               secondaryCta={{ label: "了解更多", href: "#" }}
-              className="h-[520px]"
+              className="pb-12"
             >
-              <div className="mt-8 pb-12 px-6 flex justify-center">
-                <div className="relative w-44 h-44">
-                  {[0, 1, 2, 3, 4].map((i) => (
-                    <div
-                      key={i}
-                      className="absolute w-12 h-12 rounded-full border border-border bg-white shadow-[var(--shadow-card)] flex items-center justify-center text-lg"
-                      style={{
-                        top: `${50 - 38 * Math.cos((i / 5) * Math.PI * 2)}%`,
-                        left: `${50 + 38 * Math.sin((i / 5) * Math.PI * 2)}%`,
-                        transform: "translate(-50%, -50%)",
-                      }}
-                    >
-                      {["✨", "💡", "🌸", "🎨", "📚"][i]}
-                    </div>
-                  ))}
-                  <div className="absolute inset-0 m-auto w-16 h-16 rounded-full bg-[hsl(var(--apple-blue))] text-white flex items-center justify-center text-xl font-semibold">
-                    AI
+              <div className="mt-8 px-8 text-left grid grid-cols-3 gap-3 max-w-xs mx-auto">
+                {[
+                  { n: "20+", l: "活动" },
+                  { n: "500+", l: "成员" },
+                  { n: "8", l: "城市" },
+                ].map((s) => (
+                  <div key={s.l}>
+                    <div className="text-[24px] font-semibold leading-none text-foreground">{s.n}</div>
+                    <div className="text-[12px] text-muted-foreground mt-1">{s.l}</div>
                   </div>
-                </div>
+                ))}
               </div>
             </ProductCard>
           </Reveal>
@@ -468,23 +392,17 @@ const Index = () => {
               title="新媒体工作坊"
               sub="围绕选题、表达与节奏设计培训内容，帮助新人建立可持续的输出系统。"
               secondaryCta={{ label: "了解更多", href: "#" }}
-              className="h-[520px]"
+              className="pb-12"
             >
-              <div className="mt-8 pb-12 px-6">
-                <div className="mx-auto max-w-xs space-y-2">
-                  {["选题 · 找到值得说的事", "表达 · 用人话讲清楚", "节奏 · 长期稳定输出"].map(
-                    (line, i) => (
-                      <div
-                        key={i}
-                        style={{ animationDelay: `${i * 120}ms` }}
-                        className="animate-fade-up rounded-xl bg-white border border-border px-4 py-3 text-[15px] text-foreground shadow-[var(--shadow-card)]"
-                      >
-                        <span className="text-muted-foreground mr-2">0{i + 1}</span>
-                        {line}
-                      </div>
-                    )
-                  )}
-                </div>
+              <div className="mt-8 px-8 max-w-xs mx-auto text-left space-y-3">
+                {["选题 · 找到值得说的事", "表达 · 用人话讲清楚", "节奏 · 长期稳定输出"].map(
+                  (line, i) => (
+                    <div key={i} className="flex items-baseline gap-3">
+                      <span className="text-[12px] text-muted-foreground tabular-nums">0{i + 1}</span>
+                      <span className="text-[15px] text-foreground">{line}</span>
+                    </div>
+                  )
+                )}
               </div>
             </ProductCard>
           </Reveal>
