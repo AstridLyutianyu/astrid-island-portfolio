@@ -338,51 +338,15 @@ const Index = () => {
         <div id="now" className="-mt-2" />
         <div id="skills" className="-mt-2" />
 
-        {/* Row 3: Projects header card with decorative scene */}
+        {/* Row 3: Projects header — clean */}
         <Reveal>
           <ProductCard
             id="projects-head"
             eyebrow="Projects"
             title="最近做的几件事。"
             sub="一些正在推进或刚刚完成的项目，欢迎一起聊聊。"
-            className="h-[360px] mb-2"
-          >
-            <div className="absolute inset-x-0 bottom-0 h-[55%] pointer-events-none">
-              <div className="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-[hsl(210_40%_92%)] via-[hsl(210_40%_96%)] to-transparent" />
-              <div className="relative h-full max-w-2xl mx-auto">
-                {[
-                  { left: "15%", bottom: "30%", size: 14, color: "hsl(211 100% 45%)", delay: 0 },
-                  { left: "38%", bottom: "55%", size: 10, color: "hsl(340 80% 60%)", delay: 200 },
-                  { left: "55%", bottom: "25%", size: 18, color: "hsl(45 90% 55%)", delay: 400 },
-                  { left: "72%", bottom: "50%", size: 12, color: "hsl(160 60% 45%)", delay: 600 },
-                  { left: "85%", bottom: "35%", size: 8, color: "hsl(280 60% 60%)", delay: 800 },
-                ].map((d, i) => (
-                  <span
-                    key={i}
-                    style={{
-                      left: d.left,
-                      bottom: d.bottom,
-                      width: d.size,
-                      height: d.size,
-                      background: d.color,
-                      animationDelay: `${d.delay}ms`,
-                      boxShadow: `0 4px 20px -2px ${d.color}`,
-                    }}
-                    className="absolute rounded-full animate-fade-up"
-                  />
-                ))}
-                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 60" preserveAspectRatio="none">
-                  <path
-                    d="M 15 42 Q 26 20 38 27 T 55 45 T 72 30 T 85 39"
-                    fill="none"
-                    stroke="hsl(211 100% 45% / 0.3)"
-                    strokeWidth="0.3"
-                    strokeDasharray="1 1"
-                  />
-                </svg>
-              </div>
-            </div>
-          </ProductCard>
+            className="py-14 md:py-16 mb-2"
+          />
         </Reveal>
 
         {/* Projects: 3 cards */}
