@@ -353,14 +353,21 @@ const Index = () => {
         <div id="projects" className="grid md:grid-cols-3 gap-2 mb-2">
           <Reveal delay={0}>
             <ProductCard
-              theme="dark"
               eyebrow="个人项目"
               title="环游城市海岛"
               sub="用一年时间走过城市周边的每一座海岛，把它们写成可分享的旅行笔记。"
               secondaryCta={{ label: "了解更多", href: "#" }}
-              className="h-[520px]"
+              className="pb-12"
             >
-              <IslandVisual />
+              <div className="mt-8 px-8 text-left">
+                <div className="text-[13px] text-muted-foreground mb-2">已走过</div>
+                <div className="text-[44px] font-semibold leading-none text-foreground">
+                  12<span className="text-[20px] text-muted-foreground font-normal"> / 24 座岛</span>
+                </div>
+                <div className="mt-4 h-1 rounded-full bg-[hsl(0_0%_92%)] overflow-hidden">
+                  <div className="h-full w-1/2 bg-[hsl(var(--apple-blue))] rounded-full" />
+                </div>
+              </div>
             </ProductCard>
           </Reveal>
           <Reveal delay={100}>
@@ -369,27 +376,19 @@ const Index = () => {
               title="AI × 女性社群"
               sub="策划线上线下活动，连接对 AI 感兴趣的女性创造者，沉淀工具与内容资产。"
               secondaryCta={{ label: "了解更多", href: "#" }}
-              className="h-[520px]"
+              className="pb-12"
             >
-              <div className="mt-8 pb-12 px-6 flex justify-center">
-                <div className="relative w-44 h-44">
-                  {[0, 1, 2, 3, 4].map((i) => (
-                    <div
-                      key={i}
-                      className="absolute w-12 h-12 rounded-full border border-border bg-white shadow-[var(--shadow-card)] flex items-center justify-center text-lg"
-                      style={{
-                        top: `${50 - 38 * Math.cos((i / 5) * Math.PI * 2)}%`,
-                        left: `${50 + 38 * Math.sin((i / 5) * Math.PI * 2)}%`,
-                        transform: "translate(-50%, -50%)",
-                      }}
-                    >
-                      {["✨", "💡", "🌸", "🎨", "📚"][i]}
-                    </div>
-                  ))}
-                  <div className="absolute inset-0 m-auto w-16 h-16 rounded-full bg-[hsl(var(--apple-blue))] text-white flex items-center justify-center text-xl font-semibold">
-                    AI
+              <div className="mt-8 px-8 text-left grid grid-cols-3 gap-3 max-w-xs mx-auto">
+                {[
+                  { n: "20+", l: "活动" },
+                  { n: "500+", l: "成员" },
+                  { n: "8", l: "城市" },
+                ].map((s) => (
+                  <div key={s.l}>
+                    <div className="text-[24px] font-semibold leading-none text-foreground">{s.n}</div>
+                    <div className="text-[12px] text-muted-foreground mt-1">{s.l}</div>
                   </div>
-                </div>
+                ))}
               </div>
             </ProductCard>
           </Reveal>
@@ -399,23 +398,17 @@ const Index = () => {
               title="新媒体工作坊"
               sub="围绕选题、表达与节奏设计培训内容，帮助新人建立可持续的输出系统。"
               secondaryCta={{ label: "了解更多", href: "#" }}
-              className="h-[520px]"
+              className="pb-12"
             >
-              <div className="mt-8 pb-12 px-6">
-                <div className="mx-auto max-w-xs space-y-2">
-                  {["选题 · 找到值得说的事", "表达 · 用人话讲清楚", "节奏 · 长期稳定输出"].map(
-                    (line, i) => (
-                      <div
-                        key={i}
-                        style={{ animationDelay: `${i * 120}ms` }}
-                        className="animate-fade-up rounded-xl bg-white border border-border px-4 py-3 text-[15px] text-foreground shadow-[var(--shadow-card)]"
-                      >
-                        <span className="text-muted-foreground mr-2">0{i + 1}</span>
-                        {line}
-                      </div>
-                    )
-                  )}
-                </div>
+              <div className="mt-8 px-8 max-w-xs mx-auto text-left space-y-3">
+                {["选题 · 找到值得说的事", "表达 · 用人话讲清楚", "节奏 · 长期稳定输出"].map(
+                  (line, i) => (
+                    <div key={i} className="flex items-baseline gap-3">
+                      <span className="text-[12px] text-muted-foreground tabular-nums">0{i + 1}</span>
+                      <span className="text-[15px] text-foreground">{line}</span>
+                    </div>
+                  )
+                )}
               </div>
             </ProductCard>
           </Reveal>
