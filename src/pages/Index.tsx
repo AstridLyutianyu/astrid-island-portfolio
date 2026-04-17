@@ -136,15 +136,13 @@ const PortraitVisual = () => (
 const SkillsVisual = () => {
   const skills = ["运营管理", "社群运营", "新媒体", "AI 应用", "内容策划", "项目协作"];
   return (
-    <div className="relative mt-10 px-6 pb-14">
-      <div className="flex flex-wrap items-center justify-center gap-3">
+    <div className="mt-10 px-6 pb-14">
+      <div className="flex flex-wrap items-center justify-center gap-2.5">
         {skills.map((s, i) => (
           <span
             key={s}
             style={{ animationDelay: `${i * 80}ms` }}
-            className={`animate-fade-up rounded-full bg-white border border-border px-5 py-2.5 text-[17px] font-medium text-foreground shadow-[var(--shadow-card)] ${
-              i % 3 === 0 ? "text-xl px-6 py-3" : ""
-            }`}
+            className="animate-fade-up rounded-full bg-[hsl(0_0%_96%)] px-5 py-2.5 text-[15px] font-medium text-foreground"
           >
             {s}
           </span>
@@ -156,22 +154,23 @@ const SkillsVisual = () => {
 
 const FocusVisual = () => {
   const items = [
-    { emoji: "✨", label: "AI 与女性社群" },
-    { emoji: "📓", label: "新媒体培训" },
-    { emoji: "🌿", label: "自然与人" },
+    { label: "AI 与女性社群", desc: "AI 工具如何赋能女性创造者" },
+    { label: "新媒体培训", desc: "持续学习内容策略与表达" },
+    { label: "自然与人", desc: "走到自然里，慢下来" },
   ];
   return (
-    <div className="mt-10 grid grid-cols-3 gap-3 px-6 pb-12 max-w-md mx-auto">
+    <div className="mt-10 px-8 pb-12 max-w-md mx-auto text-left space-y-5">
       {items.map((it, i) => (
         <div
           key={it.label}
           style={{ animationDelay: `${i * 100}ms` }}
-          className="animate-fade-up flex flex-col items-center gap-2 rounded-2xl bg-white border border-border py-5 px-2"
+          className="animate-fade-up flex items-start gap-4"
         >
-          <span className="text-3xl">{it.emoji}</span>
-          <span className="text-[13px] text-muted-foreground text-center leading-tight">
-            {it.label}
-          </span>
+          <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[hsl(var(--apple-blue))] shrink-0" />
+          <div>
+            <div className="text-[16px] font-medium text-foreground">{it.label}</div>
+            <div className="text-[14px] text-muted-foreground mt-0.5">{it.desc}</div>
+          </div>
         </div>
       ))}
     </div>
