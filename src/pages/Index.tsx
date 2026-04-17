@@ -61,6 +61,7 @@ const ProductCard = ({
   const isDark = theme === "dark";
   return (
     <article
+      id={id}
       className={`relative overflow-hidden rounded-[18px] ${
         isDark ? "bg-[hsl(var(--surface-dark))]" : "bg-white"
       } ${className}`}
