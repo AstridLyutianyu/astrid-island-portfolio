@@ -2,56 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Apple-inspired design system. Light, airy, premium. All colors HSL. */
+/* Apple.com inspired design system. Light, minimal, precise. All colors HSL. */
 
 @layer base {
   :root {
-    --background: 0 0% 98.4%;
-    --foreground: 0 0% 8%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 6%;
 
+    --page: 0 0% 96%;          /* apple page bg between sections */
     --surface: 0 0% 100%;
-    --surface-muted: 220 15% 96%;
+    --surface-dark: 0 0% 0%;
 
-    --hero-gradient: radial-gradient(ellipse 80% 60% at 50% 0%, hsl(211 100% 95%) 0%, hsl(0 0% 100%) 60%);
-    --accent-gradient: linear-gradient(135deg, hsl(211 100% 50%) 0%, hsl(199 89% 48%) 100%);
-    --soft-gradient: linear-gradient(135deg, hsl(220 30% 97%) 0%, hsl(210 40% 94%) 100%);
-    --warm-gradient: linear-gradient(135deg, hsl(28 60% 95%) 0%, hsl(15 70% 92%) 100%);
-    --cool-gradient: linear-gradient(135deg, hsl(180 50% 95%) 0%, hsl(200 60% 92%) 100%);
+    --apple-blue: 211 100% 45%;
+    --apple-link: 211 100% 42%;
+    --apple-gray-text: 0 0% 40%;
 
-    --shadow-sm: 0 1px 2px hsl(0 0% 0% / 0.04), 0 1px 3px hsl(0 0% 0% / 0.06);
-    --shadow-md: 0 4px 12px hsl(0 0% 0% / 0.06), 0 2px 4px hsl(0 0% 0% / 0.04);
-    --shadow-lg: 0 20px 40px -10px hsl(220 30% 20% / 0.12), 0 8px 16px -4px hsl(220 30% 20% / 0.06);
-    --shadow-glow: 0 20px 60px -15px hsl(211 100% 50% / 0.25);
-
+    --shadow-card: 0 1px 3px hsl(0 0% 0% / 0.04);
     --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    --transition-quick: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-quick: all 0.2s ease;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 8%;
+    --card-foreground: 0 0% 6%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 8%;
+    --popover-foreground: 0 0% 6%;
 
-    --primary: 0 0% 8%;
+    --primary: 0 0% 6%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 15% 96%;
-    --secondary-foreground: 0 0% 8%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 6%;
 
-    --muted: 220 14% 95%;
-    --muted-foreground: 220 9% 46%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
 
-    --accent: 211 100% 50%;
+    --accent: 211 100% 45%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 211 100% 50%;
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 211 100% 45%;
 
-    --radius: 1.25rem;
+    --radius: 1.125rem;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -74,67 +69,93 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
-      "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-    font-feature-settings: "ss01", "cv11";
+    @apply text-foreground antialiased;
+    background: hsl(var(--page));
+    font-family: "SF Pro SC", "SF Pro Display", "SF Pro Text", -apple-system,
+      BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB",
+      "Microsoft YaHei", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
 @layer utilities {
-  .bg-hero { background: var(--hero-gradient); }
-  .bg-accent-gradient { background: var(--accent-gradient); }
-  .bg-soft-gradient { background: var(--soft-gradient); }
-  .bg-warm-gradient { background: var(--warm-gradient); }
-  .bg-cool-gradient { background: var(--cool-gradient); }
-  .shadow-elegant { box-shadow: var(--shadow-lg); }
-  .shadow-soft { box-shadow: var(--shadow-md); }
-  .shadow-glow { box-shadow: var(--shadow-glow); }
-  .transition-smooth { transition: var(--transition-smooth); }
-  .transition-quick { transition: var(--transition-quick); }
-
-  .text-display {
-    font-weight: 700;
-    letter-spacing: -0.04em;
+  /* Apple-style typography */
+  .apple-eyebrow {
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.19;
+  }
+  .apple-headline {
+    font-size: clamp(40px, 7vw, 80px);
+    font-weight: 600;
+    letter-spacing: -0.015em;
     line-height: 1.05;
   }
-
-  .text-headline {
+  .apple-subhead {
+    font-size: clamp(19px, 2vw, 28px);
+    font-weight: 400;
+    letter-spacing: 0.004em;
+    line-height: 1.21;
+    color: hsl(var(--apple-gray-text));
+  }
+  .apple-card-title {
+    font-size: clamp(28px, 3vw, 40px);
     font-weight: 600;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
     line-height: 1.1;
   }
-
-  .glass {
-    background: hsl(0 0% 100% / 0.72);
-    backdrop-filter: saturate(180%) blur(20px);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
+  .apple-card-sub {
+    font-size: clamp(17px, 1.4vw, 21px);
+    font-weight: 400;
+    letter-spacing: 0.011em;
+    line-height: 1.38;
   }
 
-  .animate-fade-up {
-    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  .apple-link {
+    color: hsl(var(--apple-link));
+    font-size: 17px;
+    line-height: 1.29;
   }
+  .apple-link:hover { text-decoration: underline; }
 
-  .animate-fade-in {
-    animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  .apple-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    padding: 0 18px;
+    border-radius: 999px;
+    font-size: 17px;
+    font-weight: 400;
+    background: hsl(var(--apple-blue));
+    color: white;
+    transition: var(--transition-quick);
   }
+  .apple-pill:hover { background: hsl(211 100% 50%); }
 
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
+  .apple-pill-ghost {
+    display: inline-flex;
+    align-items: center;
+    height: 36px;
+    color: hsl(var(--apple-link));
+    font-size: 17px;
   }
+  .apple-pill-ghost:hover { text-decoration: underline; }
+
+  .text-on-dark { color: hsl(0 0% 100%); }
+  .text-on-dark-sub { color: hsl(0 0% 75%); }
+
+  .animate-fade-up { animation: fadeUp .8s cubic-bezier(0.16,1,0.3,1) both; }
+  .animate-fade-in { animation: fadeIn 1s ease both; }
 }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
 }
