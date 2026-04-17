@@ -321,7 +321,7 @@ const Index = () => {
               eyebrow="Skills"
               title="我擅长的事。"
               sub="把复杂的事拆解、组织、推进，并让团队一起跑起来。"
-              className="h-[560px]"
+              className="pb-12 h-full"
             >
               <SkillsVisual />
             </ProductCard>
