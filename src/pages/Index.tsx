@@ -203,20 +203,15 @@ const IslandVisual = () => (
 );
 
 const ContactVisual = () => (
-  <div className="mt-8 pb-12 px-6">
-    <div className="mx-auto max-w-sm rounded-2xl bg-[hsl(0_0%_96%)] border border-border p-6 text-left space-y-4">
-      <div>
-        <div className="text-[13px] text-muted-foreground mb-1">微信</div>
-        <div className="text-[19px] font-medium text-foreground tracking-wide">
-          ltyuu_
-        </div>
+  <div className="mt-10 pb-12 px-6">
+    <div className="mx-auto max-w-sm flex flex-col gap-5 items-center">
+      <div className="text-center">
+        <div className="text-[12px] text-muted-foreground mb-1">微信</div>
+        <div className="text-[19px] font-medium text-foreground tracking-wide">ltyuu_</div>
       </div>
-      <div className="h-px bg-border" />
-      <div>
-        <div className="text-[13px] text-muted-foreground mb-1">邮箱</div>
-        <div className="text-[19px] font-medium text-foreground">
-          hello@astrid.me
-        </div>
+      <div className="text-center">
+        <div className="text-[12px] text-muted-foreground mb-1">邮箱</div>
+        <div className="text-[19px] font-medium text-foreground">hello@astrid.me</div>
       </div>
     </div>
   </div>
