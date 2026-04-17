@@ -34,6 +34,7 @@ const Reveal = ({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 /* ---------- Reusable Apple-style product card ---------- */
 type CardProps = {
+  id?: string;
   eyebrow?: string;
   title: React.ReactNode;
   sub?: React.ReactNode;
@@ -46,6 +47,7 @@ type CardProps = {
 };
 
 const ProductCard = ({
+  id,
   eyebrow,
   title,
   sub,
