@@ -264,19 +264,81 @@ const Index = () => {
 
       {/* Grid of product-style cards */}
       <main className="px-2 md:px-4 pb-4">
-        {/* Row 1: About (full width, dark, with portrait) */}
+        {/* Row 1: About — split layout, photo on the right with depth */}
         <Reveal>
-          <ProductCard
-            theme="dark"
-            eyebrow="About"
-            title={<>认识一下，<br className="md:hidden" />我是 Astrid。</>}
-            sub="运营管理是日常，但我喜欢在工作之外保留一点野生的好奇心 —— 关注 AI、女性社群、新媒体表达，也愿意走到自然里去。"
-            primaryCta={{ label: "联系我", href: "#contact" }}
-            secondaryCta={{ label: "查看项目", href: "#projects" }}
-            className="h-[640px] md:h-[720px] mb-2"
-          >
-            <PortraitVisual />
-          </ProductCard>
+          <article className="relative overflow-hidden rounded-[18px] bg-white mb-2 grid md:grid-cols-2 min-h-[560px] md:min-h-[640px]">
+            {/* Left: text */}
+            <div className="relative z-10 flex flex-col justify-center px-8 md:px-14 py-14 md:py-20 text-left">
+              <div className="apple-eyebrow text-[hsl(var(--apple-blue))] mb-3">About</div>
+              <h2 className="apple-card-title mb-4 text-foreground">
+                认识一下，<br />
+                我是 Astrid。
+              </h2>
+              <p className="apple-card-sub text-muted-foreground max-w-md mb-8">
+                运营管理是日常，但我喜欢在工作之外保留一点野生的好奇心 ——
+                关注 AI、女性社群、新媒体表达，也愿意走到自然里去。
+              </p>
+
+              {/* mini facts */}
+              <div className="grid grid-cols-3 gap-4 mb-8 max-w-md">
+                {[
+                  { k: "城市", v: "广州" },
+                  { k: "角色", v: "运营 / 共创" },
+                  { k: "状态", v: "开放合作" },
+                ].map((f) => (
+                  <div key={f.k}>
+                    <div className="text-[12px] text-muted-foreground mb-1">{f.k}</div>
+                    <div className="text-[15px] font-medium text-foreground">{f.v}</div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex items-center gap-5">
+                <a href="#contact" className="apple-pill">联系我</a>
+                <a href="#projects" className="apple-pill-ghost">查看项目 ›</a>
+              </div>
+            </div>
+
+            {/* Right: portrait with decorative layers */}
+            <div className="relative h-[420px] md:h-auto bg-gradient-to-br from-[hsl(220_25%_94%)] via-[hsl(210_30%_92%)] to-[hsl(200_40%_88%)] overflow-hidden">
+              {/* soft blob */}
+              <div className="absolute -top-16 -right-16 w-72 h-72 rounded-full bg-[hsl(211_100%_70%/0.18)] blur-3xl" />
+              <div className="absolute bottom-10 -left-10 w-56 h-56 rounded-full bg-[hsl(45_100%_75%/0.25)] blur-3xl" />
+
+              {/* grid lines for design feel */}
+              <svg className="absolute inset-0 w-full h-full opacity-[0.06]" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+                    <path d="M 32 0 L 0 0 0 32" fill="none" stroke="currentColor" strokeWidth="1" />
+                  </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+              </svg>
+
+              {/* portrait card, offset & tilted slightly */}
+              <div className="absolute inset-0 flex items-center justify-center p-8 md:p-12">
+                <div className="relative">
+                  <div className="absolute -inset-3 rounded-[28px] bg-white/60 backdrop-blur-sm shadow-[0_20px_60px_-15px_hsl(0_0%_0%/0.15)] -rotate-3" />
+                  <div className="absolute -inset-1.5 rounded-[24px] bg-white shadow-[0_10px_30px_-10px_hsl(0_0%_0%/0.18)] rotate-1" />
+                  <img
+                    src={portrait}
+                    alt="Astrid 鱼仔"
+                    className="relative w-[220px] md:w-[280px] aspect-[4/5] object-cover rounded-[20px] shadow-[0_30px_60px_-20px_hsl(0_0%_0%/0.35)]"
+                    loading="eager"
+                  />
+                  {/* floating tag */}
+                  <div className="absolute -right-4 -bottom-4 bg-white rounded-2xl px-4 py-3 shadow-[0_10px_30px_-8px_hsl(0_0%_0%/0.2)] border border-border">
+                    <div className="text-[11px] text-muted-foreground">最近</div>
+                    <div className="text-[13px] font-semibold">环游海岛 🌊</div>
+                  </div>
+                  {/* small badge */}
+                  <div className="absolute -left-5 top-6 bg-[hsl(var(--apple-blue))] text-white rounded-full w-12 h-12 flex items-center justify-center text-[11px] font-medium shadow-lg rotate-[-8deg]">
+                    Hi 👋
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
         </Reveal>
 
         {/* Row 2: two cards side by side */}
@@ -309,15 +371,51 @@ const Index = () => {
         <div id="now" className="-mt-2" />
         <div id="skills" className="-mt-2" />
 
-        {/* Row 3: Projects header card */}
+        {/* Row 3: Projects header card with decorative scene */}
         <Reveal>
           <ProductCard
             id="projects-head"
             eyebrow="Projects"
             title="最近做的几件事。"
             sub="一些正在推进或刚刚完成的项目，欢迎一起聊聊。"
-            className="h-[260px] mb-2"
-          />
+            className="h-[360px] mb-2"
+          >
+            <div className="absolute inset-x-0 bottom-0 h-[55%] pointer-events-none">
+              <div className="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-[hsl(210_40%_92%)] via-[hsl(210_40%_96%)] to-transparent" />
+              <div className="relative h-full max-w-2xl mx-auto">
+                {[
+                  { left: "15%", bottom: "30%", size: 14, color: "hsl(211 100% 45%)", delay: 0 },
+                  { left: "38%", bottom: "55%", size: 10, color: "hsl(340 80% 60%)", delay: 200 },
+                  { left: "55%", bottom: "25%", size: 18, color: "hsl(45 90% 55%)", delay: 400 },
+                  { left: "72%", bottom: "50%", size: 12, color: "hsl(160 60% 45%)", delay: 600 },
+                  { left: "85%", bottom: "35%", size: 8, color: "hsl(280 60% 60%)", delay: 800 },
+                ].map((d, i) => (
+                  <span
+                    key={i}
+                    style={{
+                      left: d.left,
+                      bottom: d.bottom,
+                      width: d.size,
+                      height: d.size,
+                      background: d.color,
+                      animationDelay: `${d.delay}ms`,
+                      boxShadow: `0 4px 20px -2px ${d.color}`,
+                    }}
+                    className="absolute rounded-full animate-fade-up"
+                  />
+                ))}
+                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 60" preserveAspectRatio="none">
+                  <path
+                    d="M 15 42 Q 26 20 38 27 T 55 45 T 72 30 T 85 39"
+                    fill="none"
+                    stroke="hsl(211 100% 45% / 0.3)"
+                    strokeWidth="0.3"
+                    strokeDasharray="1 1"
+                  />
+                </svg>
+              </div>
+            </div>
+          </ProductCard>
         </Reveal>
 
         {/* Projects: 3 cards */}
