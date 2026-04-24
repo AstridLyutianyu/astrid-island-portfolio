@@ -343,44 +343,66 @@ const Index = () => {
           />
         </Reveal>
 
-        {/* Projects: 3 cards */}
-        <div id="projects" className="grid md:grid-cols-3 gap-2 mb-2">
+        {/* Projects: 4 cards */}
+        <div id="projects" className="grid md:grid-cols-2 gap-2 mb-2">
           <Reveal delay={0}>
             <ProductCard
               eyebrow="个人项目"
-              title="环游城市海岛"
-              sub="用一年时间走过城市周边的每一座海岛，把它们写成可分享的旅行笔记。"
+              title="AI × 女性项目"
+              sub="策划线上线下活动，连接对 AI 感兴趣的女性创作者，沉淀工具与内容资产。"
               secondaryCta={{ label: "了解更多", href: "#" }}
-              className="pb-12"
+              className="pb-12 h-full"
             >
-              <div className="mt-8 px-8 text-left">
-                <div className="text-[13px] text-muted-foreground mb-2">已走过</div>
-                <div className="text-[44px] font-semibold leading-none text-foreground">
-                  12<span className="text-[20px] text-muted-foreground font-normal"> / 24 座岛</span>
-                </div>
-                <div className="mt-4 h-1 rounded-full bg-[hsl(0_0%_92%)] overflow-hidden">
-                  <div className="h-full w-1/2 bg-[hsl(var(--apple-blue))] rounded-full" />
-                </div>
+              <div className="mt-8 px-8 text-left grid grid-cols-2 gap-6 max-w-xs mx-auto">
+                {[
+                  { n: "20+", l: "成员" },
+                  { n: "8+", l: "覆盖城市" },
+                ].map((s) => (
+                  <div key={s.l}>
+                    <div className="text-[28px] font-semibold leading-none text-foreground">{s.n}</div>
+                    <div className="text-[12px] text-muted-foreground mt-1">{s.l}</div>
+                  </div>
+                ))}
               </div>
             </ProductCard>
           </Reveal>
           <Reveal delay={100}>
             <ProductCard
-              eyebrow="社群运营"
-              title="AI × 女性社群"
-              sub="策划线上线下活动，连接对 AI 感兴趣的女性创造者，沉淀工具与内容资产。"
+              eyebrow="现在职"
+              title="AI 产品应用及投放"
+              sub="擅长 AI 视频、AI 漫剧、AI 智能体产品效果营销以及广告投放。"
               secondaryCta={{ label: "了解更多", href: "#" }}
-              className="pb-12"
+              className="pb-12 h-full"
             >
-              <div className="mt-8 px-8 text-left grid grid-cols-3 gap-3 max-w-xs mx-auto">
+              <div className="mt-8 px-8 max-w-xs mx-auto text-left flex flex-wrap gap-2 justify-center">
+                {["AI 视频", "AI 漫剧", "AI 智能体", "效果营销", "广告投放"].map((t) => (
+                  <span
+                    key={t}
+                    className="rounded-full bg-[hsl(0_0%_96%)] px-3.5 py-1.5 text-[13px] text-foreground"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </ProductCard>
+          </Reveal>
+          <Reveal delay={150}>
+            <ProductCard
+              eyebrow="社群 / 工作坊"
+              title="AI 学习社群组织者 · 多元文化工作坊"
+              sub="把 AI 与人文连起来，让学习真正落地为行动。"
+              secondaryCta={{ label: "了解更多", href: "#" }}
+              className="pb-12 h-full"
+            >
+              <div className="mt-8 px-8 max-w-md mx-auto text-left space-y-3">
                 {[
-                  { n: "20+", l: "活动" },
-                  { n: "500+", l: "成员" },
-                  { n: "8", l: "城市" },
-                ].map((s) => (
-                  <div key={s.l}>
-                    <div className="text-[24px] font-semibold leading-none text-foreground">{s.n}</div>
-                    <div className="text-[12px] text-muted-foreground mt-1">{s.l}</div>
+                  "AI 共学计划：每月一个落地主题",
+                  "多元文化对谈：技术与人文的交汇",
+                  "从知识到行动：案例拆解 + 实操",
+                ].map((line, i) => (
+                  <div key={i} className="flex items-baseline gap-3">
+                    <span className="text-[12px] text-muted-foreground tabular-nums">0{i + 1}</span>
+                    <span className="text-[15px] text-foreground">{line}</span>
                   </div>
                 ))}
               </div>
@@ -388,21 +410,23 @@ const Index = () => {
           </Reveal>
           <Reveal delay={200}>
             <ProductCard
-              eyebrow="培训设计"
-              title="新媒体工作坊"
-              sub="围绕选题、表达与节奏设计培训内容，帮助新人建立可持续的输出系统。"
+              eyebrow="新媒体 / 电商培训"
+              title="0 → 1 搭建变现系统"
+              sub="面向个人与企业，搭建可持续的变现系统，可接单。"
               secondaryCta={{ label: "了解更多", href: "#" }}
-              className="pb-12"
+              className="pb-12 h-full"
             >
-              <div className="mt-8 px-8 max-w-xs mx-auto text-left space-y-3">
-                {["选题 · 找到值得说的事", "表达 · 用人话讲清楚", "节奏 · 长期稳定输出"].map(
-                  (line, i) => (
-                    <div key={i} className="flex items-baseline gap-3">
-                      <span className="text-[12px] text-muted-foreground tabular-nums">0{i + 1}</span>
-                      <span className="text-[15px] text-foreground">{line}</span>
-                    </div>
-                  )
-                )}
+              <div className="mt-8 px-8 max-w-md mx-auto text-left space-y-3">
+                {[
+                  "商家运营 · 效果营销 + 割草变现 · 咨询 299/h",
+                  "新媒体培训 · 个人项目账号陪跑 · 166/h",
+                  "女性商业公益互助",
+                ].map((line, i) => (
+                  <div key={i} className="flex items-baseline gap-3">
+                    <span className="text-[12px] text-muted-foreground tabular-nums">0{i + 1}</span>
+                    <span className="text-[15px] text-foreground">{line}</span>
+                  </div>
+                ))}
               </div>
             </ProductCard>
           </Reveal>
@@ -416,7 +440,7 @@ const Index = () => {
             title={<>如果你也在做<br className="md:hidden" />有温度的事。</>}
             sub="欢迎找我聊聊合作、共创，或者只是分享一个让你心动的想法。"
             primaryCta={{ label: "复制微信号", href: "#contact" }}
-            secondaryCta={{ label: "发送邮件", href: "mailto:hello@astrid.me" }}
+            secondaryCta={{ label: "发送邮件", href: "mailto:astridlty@foxmail.com" }}
             className="min-h-[560px]"
           >
             <ContactVisual />
