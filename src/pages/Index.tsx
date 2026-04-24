@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import portrait from "@/assets/astrid-portrait.jpg";
+import { getAsset } from "@/lib/assets";
 
 const useReveal = () => {
   const ref = useRef<HTMLDivElement>(null);
