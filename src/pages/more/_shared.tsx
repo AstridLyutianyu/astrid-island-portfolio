@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { getAsset } from "@/lib/assets";
 
 /**
  * Shared building blocks for the /more art-direction system.
@@ -116,39 +117,40 @@ export const PaintBackButton = ({ accent }: { accent: string }) => (
 
 /* ---------- Image with painted edge + graceful fallback placeholder ---------- */
 export const PaintedImage = ({
-  src,
+  filename,
   alt,
   className = "",
   fallbackHint,
   fallbackBg = "#222",
 }: {
-  src: string;
+  /** Bare filename inside src/assets/, e.g. "red.png" */
+  filename: string;
   alt: string;
   className?: string;
   fallbackHint: string;
   fallbackBg?: string;
-}) => (
-  <div className={`relative ${className}`}>
-    <img
-      src={src}
-      alt={alt}
-      className="w-full h-full object-cover"
-      style={{ filter: "url(#brush-edge)" }}
-      onError={(e) => {
-        const t = e.currentTarget as HTMLImageElement;
-        t.style.display = "none";
-        const ph = t.nextElementSibling as HTMLElement | null;
-        if (ph) ph.style.display = "flex";
-      }}
-    />
-    <div
-      style={{ display: "none", background: fallbackBg }}
-      className="w-full h-full items-center justify-center text-white/80 text-xs text-center p-4 leading-relaxed"
-    >
-      {fallbackHint}
+}) => {
+  const src = getAsset(filename);
+  return (
+    <div className={`relative ${className}`}>
+      {src ? (
+        <img
+          src={src}
+          alt={alt}
+          className="w-full h-full object-cover"
+          style={{ filter: "url(#brush-edge)" }}
+        />
+      ) : (
+        <div
+          style={{ background: fallbackBg }}
+          className="w-full h-full flex items-center justify-center text-white/80 text-xs text-center p-4 leading-relaxed"
+        >
+          {fallbackHint}
+        </div>
+      )}
     </div>
-  </div>
-);
+  );
+};
 
 /* ---------- Container preset for color pages ---------- */
 export const ColorPageShell = ({
