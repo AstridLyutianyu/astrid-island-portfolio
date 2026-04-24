@@ -107,7 +107,7 @@ const Yellow = () => (
           </svg>
           <div className="absolute inset-[6%]">
             <PaintedImage
-              src="/src/assets/yellow.png"
+              filename="yellow.png"
               alt="yellow 配图"
               className="w-full h-full"
               fallbackHint="yellow.png · 请上传到 src/assets/"

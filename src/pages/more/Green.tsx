@@ -69,7 +69,7 @@ const Green = () => (
             </svg>
             <div className="absolute inset-[10%]">
               <PaintedImage
-                src="/src/assets/muchroom.png"
+                filename="muchroom.png"
                 alt="muchroom logo"
                 className="w-full h-full"
                 fallbackHint="muchroom logo · 请上传 muchroom.png 到 src/assets/"
@@ -120,7 +120,7 @@ const Green = () => (
             </svg>
             <div className="absolute inset-[6%]">
               <PaintedImage
-                src="/src/assets/green.png"
+                filename="green.png"
                 alt="green 配图"
                 className="w-full h-full"
                 fallbackHint="green.png · 请上传到 src/assets/"

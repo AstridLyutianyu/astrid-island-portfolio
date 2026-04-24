@@ -48,7 +48,7 @@ const Red = () => (
           </div>
           <div className="relative w-full aspect-square max-w-[420px]">
             <PaintedImage
-              src="/src/assets/红巢.png"
+              filename="红巢.png"
               alt="红巢 logo"
               className="w-full h-full"
               fallbackHint="红巢 logo · 请上传 红巢.png 到 src/assets/"
@@ -74,7 +74,7 @@ const Red = () => (
             </svg>
             <div className="absolute inset-[6%]">
               <PaintedImage
-                src="/src/assets/red.png"
+                filename="red.png"
                 alt="red 配图"
                 className="w-full h-full"
                 fallbackHint="red.png · 请上传到 src/assets/"
