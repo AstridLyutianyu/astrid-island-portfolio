@@ -211,7 +211,7 @@ const ContactVisual = () => (
       </div>
       <div className="text-center">
         <div className="text-[12px] text-muted-foreground mb-1">邮箱</div>
-        <div className="text-[19px] font-medium text-foreground">hello@astrid.me</div>
+        <div className="text-[19px] font-medium text-foreground">astridlty@foxmail.com</div>
       </div>
     </div>
   </div>
