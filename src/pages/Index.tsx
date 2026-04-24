@@ -333,6 +333,29 @@ const Index = () => {
         <div id="now" className="-mt-2" />
         <div id="skills" className="-mt-2" />
 
+        {/* Logo wall — partners / brands */}
+        <Reveal>
+          {(() => {
+            const logoWall = getAsset("logo-wall.png");
+            return (
+              <div className="rounded-[18px] bg-white mb-2 px-6 md:px-10 py-10 md:py-14">
+                {logoWall ? (
+                  <img
+                    src={logoWall}
+                    alt="合作过的品牌 Logo 墙"
+                    className="w-full h-auto rounded-2xl"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="w-full aspect-[6/1] rounded-2xl bg-[hsl(0_0%_96%)] flex items-center justify-center text-[13px] text-muted-foreground">
+                    Logo 墙占位 · 请上传 logo-wall.png 至 src/assets/
+                  </div>
+                )}
+              </div>
+            );
+          })()}
+        </Reveal>
+
         {/* Row 3: Projects header — clean */}
         <Reveal>
           <ProductCard
