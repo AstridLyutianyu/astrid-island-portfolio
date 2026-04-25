@@ -322,9 +322,28 @@ const Index = () => {
               eyebrow="Skills"
               title="我擅长的事。"
               sub="把复杂的事拆解、组织、推进，并让团队一起跑起来。"
-              className="pb-12 h-full"
+              className="pb-10 h-full"
             >
               <SkillsVisual />
+              {(() => {
+                const logoWall = getAsset("logo-wall.png");
+                return (
+                  <div className="px-6 pb-10">
+                    {logoWall ? (
+                      <img
+                        src={logoWall}
+                        alt="合作过的品牌 Logo 墙"
+                        className="w-full h-auto rounded-xl max-w-md mx-auto"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="w-full aspect-[6/1] rounded-xl bg-[hsl(0_0%_96%)] flex items-center justify-center text-[12px] text-muted-foreground max-w-md mx-auto">
+                        Logo 墙占位
+                      </div>
+                    )}
+                  </div>
+                );
+              })()}
             </ProductCard>
           </Reveal>
         </div>
@@ -332,29 +351,6 @@ const Index = () => {
         {/* anchor for now */}
         <div id="now" className="-mt-2" />
         <div id="skills" className="-mt-2" />
-
-        {/* Logo wall — partners / brands */}
-        <Reveal>
-          {(() => {
-            const logoWall = getAsset("logo-wall.png");
-            return (
-              <div className="rounded-[18px] bg-white mb-2 px-6 md:px-10 py-10 md:py-14">
-                {logoWall ? (
-                  <img
-                    src={logoWall}
-                    alt="合作过的品牌 Logo 墙"
-                    className="w-full h-auto rounded-2xl"
-                    loading="lazy"
-                  />
-                ) : (
-                  <div className="w-full aspect-[6/1] rounded-2xl bg-[hsl(0_0%_96%)] flex items-center justify-center text-[13px] text-muted-foreground">
-                    Logo 墙占位 · 请上传 logo-wall.png 至 src/assets/
-                  </div>
-                )}
-              </div>
-            );
-          })()}
-        </Reveal>
 
         {/* Row 3: Projects header — clean */}
         <Reveal>
