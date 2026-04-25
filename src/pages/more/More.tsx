@@ -29,7 +29,7 @@ const hotspots: Hotspot[] = [
 
 const More = () => {
   return (
-    <div className="min-h-screen w-full bg-neutral-100 flex items-center justify-center py-6 px-3">
+    <div className="min-h-screen w-full bg-muted flex items-center justify-center py-6 px-3">
       <div
         className="relative w-full max-w-[820px] shadow-2xl rounded-md overflow-hidden"
         style={{ aspectRatio: "1440 / 1920" }}
