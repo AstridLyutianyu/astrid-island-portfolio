@@ -322,22 +322,25 @@ const Index = () => {
               eyebrow="Skills"
               title="我擅长的事。"
               sub="把复杂的事拆解、组织、推进，并让团队一起跑起来。"
-              className="pb-10 h-full"
+              className="pb-8 h-full"
             >
               <SkillsVisual />
               {(() => {
                 const logoWall = getAsset("logo-wall.png");
                 return (
-                  <div className="px-6 pb-10">
+                  <div className="px-6 pb-6 -mt-6">
+                    <div className="text-center text-[10px] tracking-[0.4em] uppercase text-muted-foreground mb-3">
+                      Partners · 合作过的品牌
+                    </div>
                     {logoWall ? (
                       <img
                         src={logoWall}
                         alt="合作过的品牌 Logo 墙"
-                        className="w-full h-auto rounded-xl max-w-md mx-auto"
+                        className="w-full h-auto rounded-lg max-w-[260px] mx-auto"
                         loading="lazy"
                       />
                     ) : (
-                      <div className="w-full aspect-[6/1] rounded-xl bg-[hsl(0_0%_96%)] flex items-center justify-center text-[12px] text-muted-foreground max-w-md mx-auto">
+                      <div className="w-full aspect-[6/1] rounded-lg bg-[hsl(0_0%_96%)] flex items-center justify-center text-[12px] text-muted-foreground max-w-[260px] mx-auto">
                         Logo 墙占位
                       </div>
                     )}

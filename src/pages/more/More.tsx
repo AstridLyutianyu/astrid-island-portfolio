@@ -1,20 +1,22 @@
 import { Link } from "react-router-dom";
-import { PaintFilters, CanvasGrain, PaintBlob, BrushStroke } from "./_shared";
+import { PaintFilters, CanvasGrain, BrushStroke } from "./_shared";
+import moreBg from "@/assets/more-bg.jpg";
 
 /**
  * /more — Hub page.
- * Background: warm canvas (off-white) with thick paint splashes.
+ * Background: uploaded marbled oil-paint texture.
  * Six irregular portals → /more/{red,orange,yellow,green,blue,purple}
+ * Portals use multiply + slight transparency to blend into the canvas.
  */
 
 type Portal = {
   to: string;
   label: string;
-  word: string; // theme word
-  glyph: string; // small representative element
+  word: string;
+  glyph: string;
   color: string;
-  d: string; // SVG path for the painted blob
-  pos: string; // tailwind classes for positioning
+  d: string;
+  pos: string;
   rotate: number;
 };
 
@@ -81,44 +83,118 @@ const portals: Portal[] = [
   },
 ];
 
+/* ---------- Decorative center sun (mirrors uploaded reference image) ---------- */
+const CenterSun = () => (
+  <div
+    className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] md:w-[360px] aspect-square"
+    aria-hidden
+  >
+    <svg viewBox="0 0 200 200" className="w-full h-full">
+      {/* Radiating rays */}
+      {Array.from({ length: 36 }).map((_, i) => {
+        const a = (i * Math.PI * 2) / 36;
+        const x2 = 100 + Math.cos(a) * 95;
+        const y2 = 100 + Math.sin(a) * 95;
+        return (
+          <line
+            key={i}
+            x1="100"
+            y1="100"
+            x2={x2}
+            y2={y2}
+            stroke="#f5c64a"
+            strokeWidth={i % 2 === 0 ? 1.5 : 0.6}
+            opacity="0.35"
+            filter="url(#oil-paint)"
+          />
+        );
+      })}
+      {/* Concentric sun body */}
+      <circle cx="100" cy="100" r="60" fill="#f5c64a" opacity="0.25" filter="url(#thick-paint)" />
+      <circle cx="100" cy="100" r="44" fill="#f0a830" opacity="0.45" filter="url(#thick-paint)" />
+      <circle cx="100" cy="100" r="28" fill="#e89020" opacity="0.7" filter="url(#thick-paint)" />
+      <circle cx="100" cy="100" r="14" fill="#fff5d8" opacity="0.85" />
+    </svg>
+  </div>
+);
+
+/* ---------- Scattered paint sparks / star bursts ---------- */
+const Sparks = () => {
+  const sparks = [
+    { left: "8%", top: "22%", size: 14, color: "#c0142b" },
+    { left: "92%", top: "18%", size: 10, color: "#5b1e8a" },
+    { left: "44%", top: "8%", size: 8, color: "#1a4ad6" },
+    { left: "55%", top: "28%", size: 12, color: "#1f7a4d" },
+    { left: "20%", top: "62%", size: 16, color: "#e8631a" },
+    { left: "78%", top: "70%", size: 11, color: "#f1b81a" },
+    { left: "48%", top: "78%", size: 14, color: "#5b1e8a" },
+    { left: "30%", top: "92%", size: 9, color: "#c0142b" },
+    { left: "68%", top: "94%", size: 10, color: "#1a4ad6" },
+  ];
+  return (
+    <div className="pointer-events-none absolute inset-0" aria-hidden>
+      {sparks.map((s, i) => (
+        <svg
+          key={i}
+          viewBox="0 0 20 20"
+          className="absolute"
+          style={{
+            left: s.left,
+            top: s.top,
+            width: s.size,
+            height: s.size,
+            opacity: 0.55,
+          }}
+        >
+          <path
+            d="M10 0 L 12 8 L 20 10 L 12 12 L 10 20 L 8 12 L 0 10 L 8 8 Z"
+            fill={s.color}
+            filter="url(#oil-paint)"
+          />
+        </svg>
+      ))}
+    </div>
+  );
+};
+
 const More = () => {
   return (
-    <div
-      className="relative min-h-screen overflow-hidden"
-      style={{
-        background:
-          "radial-gradient(ellipse at 20% 10%, #f5e9d6 0%, #efe1c8 40%, #e7d6b3 100%)",
-      }}
-    >
+    <div className="relative min-h-screen overflow-hidden">
+      {/* Background image — marbled oil paint */}
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `url(${moreBg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+        aria-hidden
+      />
+      {/* Soft white veil so portals & text stay legible */}
+      <div className="absolute inset-0 bg-[hsl(40_30%_96%/0.45)]" aria-hidden />
+
       <PaintFilters />
       <CanvasGrain />
 
-      {/* Background painterly accents */}
-      <PaintBlob
-        d="M80 60 C 30 130, 60 240, 160 250 C 280 260, 360 180, 340 90 C 320 20, 220 10, 140 20 C 110 22, 100 30, 80 60 Z"
-        fill="#ec603e"
-        className="left-[-12%] top-[-10%] w-[60%] aspect-square opacity-[0.18] -rotate-12"
+      {/* Subtle accent stroke (background image already does the heavy lifting) */}
+      <BrushStroke
+        color="#5b1e8a"
+        className="left-[5%] top-[24%] w-[55%] opacity-[0.12]"
+        rotate={-6}
       />
-      <PaintBlob
-        d="M50 90 C 10 170, 90 260, 180 240 C 280 220, 340 130, 300 70 C 260 20, 170 30, 110 40 C 80 46, 70 60, 50 90 Z"
-        fill="#1a4ad6"
-        className="right-[-10%] bottom-[-12%] w-[55%] aspect-square opacity-[0.14] rotate-12"
-      />
-      <BrushStroke color="#5b1e8a" className="left-[10%] top-[28%] w-[60%] opacity-20" rotate={-8} />
 
-      {/* Resume back link — small, painted */}
+      {/* Resume back link */}
       <Link
         to="/"
-        className="fixed top-5 right-6 md:top-7 md:right-9 z-50 text-[12px] tracking-[0.2em] uppercase text-[#1a1a1a]/70 hover:text-[#1a1a1a] transition-colors"
+        className="fixed top-5 right-6 md:top-7 md:right-9 z-50 text-[12px] tracking-[0.2em] uppercase text-[#1a1a1a]/70 hover:text-[#1a1a1a] transition-colors bg-[hsl(40_30%_96%/0.6)] px-3 py-1.5 rounded-full backdrop-blur-sm"
       >
         ← back to resume
       </Link>
 
       {/* Hero title */}
       <header className="relative z-10 px-6 md:px-12 pt-20 md:pt-28 pb-10 md:pb-12 text-center">
-        <div
-          className="inline-block text-[11px] md:text-[12px] tracking-[0.4em] uppercase text-[#7a1f0c] font-semibold mb-6"
-        >
+        <div className="inline-block text-[11px] md:text-[12px] tracking-[0.4em] uppercase text-[#7a1f0c] font-semibold mb-6">
           MORE · 多元 · 多彩 · 多面
         </div>
         <h1
@@ -139,14 +215,18 @@ const More = () => {
           </span>
           <span className="block">更多面</span>
         </h1>
-        <p className="mt-6 text-[15px] md:text-[17px] text-[#1a1a1a]/70 max-w-xl mx-auto leading-relaxed">
+        <p className="mt-6 text-[15px] md:text-[17px] text-[#1a1a1a]/75 max-w-xl mx-auto leading-relaxed">
           除了简历里那些「正经事」 ——<br />
           这里是我作为一个人，更野、更鲜艳、更不被定义的部分。
         </p>
       </header>
 
-      {/* Portal canvas — layered, irregular, overlapping */}
+      {/* Portal canvas — layered, irregular, overlapping, blended */}
       <section className="relative z-10 mx-auto max-w-[1400px] h-[1100px] md:h-[1200px] mb-20">
+        {/* Center sun + scattered sparks fill the negative space */}
+        <CenterSun />
+        <Sparks />
+
         {portals.map((p) => (
           <Link
             key={p.to}
@@ -154,20 +234,38 @@ const More = () => {
             className={`group absolute ${p.pos} block`}
             style={{ transform: `rotate(${p.rotate}deg)` }}
           >
-            <div className="relative w-full h-full transition-transform duration-500 ease-out group-hover:scale-105 group-hover:-rotate-2">
+            <div
+              className="relative w-full h-full transition-transform duration-500 ease-out group-hover:scale-105 group-hover:-rotate-2"
+              style={{ filter: "drop-shadow(0 8px 24px rgba(60,40,20,0.18))" }}
+            >
               <svg
                 viewBox="0 0 360 240"
-                className="absolute inset-0 w-full h-full drop-shadow-2xl"
+                className="absolute inset-0 w-full h-full"
                 preserveAspectRatio="none"
                 aria-hidden
+                style={{ mixBlendMode: "multiply" }}
               >
-                <path d={p.d} fill={p.color} filter="url(#thick-paint)" />
-                {/* highlight stroke */}
+                {/* main painted blob — slightly transparent so canvas texture bleeds through */}
+                <path
+                  d={p.d}
+                  fill={p.color}
+                  opacity="0.88"
+                  filter="url(#thick-paint)"
+                />
+                {/* dark rough edge */}
                 <path
                   d={p.d}
                   fill="none"
-                  stroke="rgba(255,255,255,0.35)"
-                  strokeWidth="2"
+                  stroke="rgba(0,0,0,0.18)"
+                  strokeWidth="1.5"
+                  filter="url(#oil-paint)"
+                />
+                {/* light highlight */}
+                <path
+                  d={p.d}
+                  fill="none"
+                  stroke="rgba(255,255,255,0.3)"
+                  strokeWidth="1"
                   filter="url(#oil-paint)"
                 />
               </svg>
@@ -175,19 +273,19 @@ const More = () => {
                 className="relative h-full w-full flex flex-col items-center justify-center text-white px-6 text-center"
                 style={{ transform: `rotate(${-p.rotate}deg)` }}
               >
-                <div className="text-[10px] md:text-[11px] tracking-[0.4em] uppercase opacity-80 mb-2">
+                <div className="text-[10px] md:text-[11px] tracking-[0.4em] uppercase opacity-90 mb-2">
                   {p.label}
                 </div>
                 <div
                   className="font-black leading-none mb-3"
                   style={{
                     fontSize: "clamp(32px, 4vw, 56px)",
-                    textShadow: "2px 3px 0 rgba(0,0,0,0.25)",
+                    textShadow: "2px 3px 0 rgba(0,0,0,0.3)",
                   }}
                 >
                   {p.word}
                 </div>
-                <div className="text-3xl md:text-4xl opacity-90">{p.glyph}</div>
+                <div className="text-3xl md:text-4xl opacity-95">{p.glyph}</div>
                 <div className="mt-4 text-[11px] tracking-[0.3em] uppercase opacity-0 group-hover:opacity-90 transition-opacity">
                   enter →
                 </div>
@@ -197,7 +295,7 @@ const More = () => {
         ))}
       </section>
 
-      <footer className="relative z-10 text-center pb-10 text-[11px] tracking-[0.3em] uppercase text-[#1a1a1a]/50">
+      <footer className="relative z-10 text-center pb-10 text-[11px] tracking-[0.3em] uppercase text-[#1a1a1a]/55">
         painted with intention · 2026
       </footer>
     </div>
