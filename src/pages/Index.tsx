@@ -366,29 +366,8 @@ const Index = () => {
           />
         </Reveal>
 
-        {/* Projects: 4 cards */}
+        {/* Projects: 3 cards */}
         <div id="projects" className="grid md:grid-cols-2 gap-2 mb-2">
-          <Reveal delay={0}>
-            <ProductCard
-              eyebrow="个人项目"
-              title="AI × 女性项目"
-              sub="策划线上线下活动，连接对 AI 感兴趣的女性创作者，沉淀工具与内容资产。"
-              secondaryCta={{ label: "了解更多", href: "#" }}
-              className="pb-12 h-full"
-            >
-              <div className="mt-8 px-8 text-left grid grid-cols-2 gap-6 max-w-xs mx-auto">
-                {[
-                  { n: "20+", l: "成员" },
-                  { n: "8+", l: "覆盖城市" },
-                ].map((s) => (
-                  <div key={s.l}>
-                    <div className="text-[28px] font-semibold leading-none text-foreground">{s.n}</div>
-                    <div className="text-[12px] text-muted-foreground mt-1">{s.l}</div>
-                  </div>
-                ))}
-              </div>
-            </ProductCard>
-          </Reveal>
           <Reveal delay={100}>
             <ProductCard
               eyebrow="现在职"
