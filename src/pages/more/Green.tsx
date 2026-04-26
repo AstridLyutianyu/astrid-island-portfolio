@@ -16,7 +16,7 @@ const Green = () => (
     />
     <BrushStroke color="#7fffb8" className="left-[20%] top-[35%] w-[60%] opacity-25" rotate={4} />
 
-    <main className="relative z-10 px-6 md:px-16 py-24 md:py-32 max-w-[1400px] mx-auto">
+    <main className="relative z-10 px-6 md:px-16 py-14 md:py-20 max-w-[1400px] mx-auto">
       <div className="text-[11px] md:text-[12px] tracking-[0.5em] uppercase text-green-200/80 mb-6">
         GREEN · 04 / 06
       </div>
@@ -53,7 +53,7 @@ const Green = () => (
         和<span className="italic" style={{ color: "#7fffb8", filter: "url(#oil-paint)" }}>平</span>
       </h1>
 
-      <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-start mt-20">
+      <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-start mt-12">
         {/* muchroom logo */}
         <div>
           <div className="text-[11px] tracking-[0.4em] uppercase text-green-200/70 mb-4">
@@ -109,7 +109,7 @@ const Green = () => (
           </svg>
         </div>
 
-        <div className="md:mt-24">
+        <div className="md:mt-14">
           <div className="relative w-full aspect-[4/5] max-w-[420px] ml-auto">
             <svg viewBox="0 0 100 125" className="absolute inset-0 w-full h-full" aria-hidden>
               <path
@@ -140,7 +140,7 @@ const Green = () => (
       </div>
 
       <blockquote
-        className="mt-32 text-3xl md:text-5xl font-black italic leading-tight max-w-3xl"
+        className="mt-16 md:mt-12 text-3xl md:text-5xl font-black italic leading-tight max-w-3xl"
         style={{ color: "#eafff4", fontFamily: "Georgia, serif" }}
       >
         " 沉默是<span style={{ color: "#c0142b" }}>共谋</span> ——<br />

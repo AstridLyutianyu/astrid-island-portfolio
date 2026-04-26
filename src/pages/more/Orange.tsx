@@ -18,7 +18,7 @@ const Orange = () => (
     <BrushStroke color="#ffcc55" className="left-[15%] top-[20%] w-[70%] opacity-40" rotate={2} />
     <BrushStroke color="#fff2c0" className="right-[5%] bottom-[30%] w-[60%] opacity-35" rotate={-6} />
 
-    <main className="relative z-10 px-6 md:px-16 py-24 md:py-32 max-w-[1400px] mx-auto">
+    <main className="relative z-10 px-6 md:px-16 py-14 md:py-20 max-w-[1400px] mx-auto">
       <div className="text-[11px] md:text-[12px] tracking-[0.5em] uppercase text-orange-100/80 mb-6">
         ORANGE · 02 / 06
       </div>
@@ -38,7 +38,7 @@ const Orange = () => (
         合
       </h1>
 
-      <p className="text-xl md:text-2xl max-w-2xl text-orange-50/90 leading-relaxed mb-20">
+      <p className="text-xl md:text-2xl max-w-2xl text-orange-50/90 leading-relaxed mb-12">
         裂痕不是要被掩盖的 ——<br />
         而是金色颜料流过的地方。<br />
         <span className="italic text-orange-100/70">
@@ -47,7 +47,7 @@ const Orange = () => (
       </p>
 
       {/* Three logos in a staggered, painterly row */}
-      <div className="grid md:grid-cols-3 gap-10 md:gap-6 mb-24">
+      <div className="grid md:grid-cols-3 gap-10 md:gap-6 mb-14">
         {[
           { src: "极乐玫瑰.png", label: "极乐玫瑰", offset: "md:mt-0" },
           { src: "Ambifree.png", label: "Ambifree", offset: "md:mt-16" },

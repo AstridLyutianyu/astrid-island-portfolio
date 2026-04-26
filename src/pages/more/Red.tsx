@@ -19,7 +19,7 @@ const Red = () => (
     <BrushStroke color="#3a0008" className="right-[10%] top-[60%] w-[50%] opacity-60" rotate={8} />
 
     {/* Main content */}
-    <main className="relative z-10 px-6 md:px-16 py-24 md:py-32 max-w-[1400px] mx-auto">
+    <main className="relative z-10 px-6 md:px-16 py-14 md:py-20 max-w-[1400px] mx-auto">
       <div className="text-[11px] md:text-[12px] tracking-[0.5em] uppercase text-red-200/80 mb-6">
         RED · 01 / 06
       </div>
@@ -40,7 +40,7 @@ const Red = () => (
         </span>
       </h1>
 
-      <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-start mt-20">
+      <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-start mt-12">
         {/* Logo: 红巢 */}
         <div>
           <div className="text-[11px] tracking-[0.4em] uppercase text-red-200/70 mb-4">
@@ -63,7 +63,7 @@ const Red = () => (
         </div>
 
         {/* Image: red.png */}
-        <div className="md:mt-24">
+        <div className="md:mt-14">
           <div className="relative w-full aspect-[4/5] max-w-[420px] ml-auto">
             <svg viewBox="0 0 100 125" className="absolute inset-0 w-full h-full" aria-hidden>
               <path
@@ -98,7 +98,7 @@ const Red = () => (
       </div>
 
       <blockquote
-        className="mt-32 text-3xl md:text-5xl font-black italic leading-tight max-w-3xl"
+        className="mt-16 md:mt-12 text-3xl md:text-5xl font-black italic leading-tight max-w-3xl"
         style={{ color: "#ffd9dd", fontFamily: "Georgia, serif" }}
       >
         " 我不是谁的影子，<br />

@@ -36,7 +36,7 @@ const Yellow = () => (
     />
     <BrushStroke color="#a87d04" className="left-[10%] bottom-[20%] w-[80%] opacity-40" rotate={-3} />
 
-    <main className="relative z-10 px-6 md:px-16 py-24 md:py-32 max-w-[1400px] mx-auto">
+    <main className="relative z-10 px-6 md:px-16 py-14 md:py-20 max-w-[1400px] mx-auto">
       <div className="text-[11px] md:text-[12px] tracking-[0.5em] uppercase text-yellow-900/70 mb-6">
         YELLOW · 03 / 06
       </div>
@@ -118,7 +118,7 @@ const Yellow = () => (
       </div>
 
       <blockquote
-        className="mt-32 text-3xl md:text-5xl font-black italic leading-tight max-w-3xl"
+        className="mt-16 md:mt-12 text-3xl md:text-5xl font-black italic leading-tight max-w-3xl"
         style={{ color: "#3d2c00", fontFamily: "Georgia, serif" }}
       >
         " 善待每一个不会说话的灵魂 ——<br />

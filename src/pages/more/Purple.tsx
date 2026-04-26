@@ -46,7 +46,7 @@ const Purple = () => (
 
     <BrushStroke color="#ffd6f8" className="left-[5%] top-[55%] w-[80%] opacity-30" rotate={-4} />
 
-    <main className="relative z-10 px-6 md:px-16 py-24 md:py-32 max-w-[1400px] mx-auto">
+    <main className="relative z-10 px-6 md:px-16 py-14 md:py-20 max-w-[1400px] mx-auto">
       <div className="text-[11px] md:text-[12px] tracking-[0.5em] uppercase text-purple-100/80 mb-6">
         PURPLE · 06 / 06
       </div>
@@ -95,7 +95,7 @@ const Purple = () => (
         </svg>
       </div>
 
-      <div className="grid md:grid-cols-[1fr_1.2fr] gap-12 md:gap-16 items-center mt-20">
+      <div className="grid md:grid-cols-[1fr_1.2fr] gap-12 md:gap-16 items-center mt-12">
         <div>
           <p className="text-lg md:text-xl text-purple-100/85 leading-relaxed max-w-md">
             创作不是奢侈，是证明你还活着的方式。<br />
@@ -149,7 +149,7 @@ const Purple = () => (
       </div>
 
       <blockquote
-        className="mt-32 text-3xl md:text-5xl font-black italic leading-tight max-w-3xl"
+        className="mt-16 md:mt-12 text-3xl md:text-5xl font-black italic leading-tight max-w-3xl"
         style={{ color: "#fff0fc", fontFamily: "Georgia, serif" }}
       >
         " 流泪不是软弱 ——<br />
