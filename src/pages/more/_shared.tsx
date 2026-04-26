@@ -47,18 +47,6 @@ export const PaintFilters = () => (
         </mask>
       </defs>
     </svg>
-    {/* Global softening for the legacy hard "frame" SVG that wraps PaintedImage in each color page.
-        Each color page renders <svg>...path...</svg><div className="absolute inset-[X%]"><PaintedImage/></div>.
-        We target the sibling svg path of any .painted-image-host and turn it into a soft halo instead of a hard frame. */}
-    <style>{`
-      .painted-image-host { position: relative; }
-      .painted-image-host > svg:first-child > path {
-        opacity: 0.55 !important;
-        filter: blur(14px) url(#thick-paint) !important;
-        transform: scale(1.04);
-        transform-origin: center;
-      }
-    `}</style>
   </>
 );
 
