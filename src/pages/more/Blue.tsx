@@ -31,7 +31,7 @@ const Blue = () => (
 
     <BrushStroke color="#fff" className="left-[10%] top-[68%] w-[40%] opacity-30" rotate={-3} />
 
-    <main className="relative z-10 px-6 md:px-16 py-24 md:py-32 max-w-[1400px] mx-auto">
+    <main className="relative z-10 px-6 md:px-16 py-14 md:py-20 max-w-[1400px] mx-auto">
       <div className="text-[11px] md:text-[12px] tracking-[0.5em] uppercase text-blue-100/80 mb-6">
         BLUE · 05 / 06
       </div>
@@ -47,7 +47,7 @@ const Blue = () => (
       >
         海<span className="italic" style={{ color: "#7fb6ff", filter: "url(#oil-paint)" }}>洋</span>
       </h1>
-      <p className="text-2xl md:text-4xl font-black italic text-blue-100/90 mb-20" style={{ fontFamily: "Georgia, serif" }}>
+      <p className="text-2xl md:text-4xl font-black italic text-blue-100/90 mb-12" style={{ fontFamily: "Georgia, serif" }}>
         — 保护生态。
       </p>
 
@@ -110,7 +110,7 @@ const Blue = () => (
       </div>
 
       {/* Water-oil separation band */}
-      <div className="mt-24 h-32 relative overflow-hidden rounded-3xl">
+      <div className="mt-14 h-32 relative overflow-hidden rounded-3xl">
         <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, #1a4ad6 0%, #1a4ad6 50%, #f5e9d6 50%, #f5e9d6 100%)" }} />
         <svg viewBox="0 0 1200 200" className="absolute inset-0 w-full h-full" preserveAspectRatio="none" aria-hidden>
           <path
@@ -122,7 +122,7 @@ const Blue = () => (
       </div>
 
       <blockquote
-        className="mt-24 text-3xl md:text-5xl font-black italic leading-tight max-w-3xl"
+        className="mt-14 text-3xl md:text-5xl font-black italic leading-tight max-w-3xl"
         style={{ color: "#eaf3ff", fontFamily: "Georgia, serif" }}
       >
         " 海不是你的，<br />
