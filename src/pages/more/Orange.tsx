@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import orangeCollage from "@/assets/orange-collage.png";
 
 const Orange = () => (
-  <div className="relative min-h-screen w-full bg-black flex items-center justify-center overflow-hidden">
+  <div className="relative min-h-screen w-full bg-muted flex items-center justify-center py-6 px-3 overflow-hidden">
     <Link
       to="/more"
       aria-label="返回 /more"
