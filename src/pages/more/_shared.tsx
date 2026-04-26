@@ -178,8 +178,7 @@ export const PaintedImage = ({
 
 /* ---------- Floating paint specks: scattered dots & droplets ---------- */
 const FloatingSpecks = ({ palette }: { palette: string[] }) => {
-  // Deterministic pseudo-random positions so SSR/CSR match
-  const specks = Array.from({ length: 22 }).map((_, i) => {
+  const specks = Array.from({ length: 14 }).map((_, i) => {
     const seed = i * 9301 + 49297;
     const r1 = ((seed * 233280) % 100) / 100;
     const r2 = ((seed * 9301) % 100) / 100;
@@ -187,7 +186,7 @@ const FloatingSpecks = ({ palette }: { palette: string[] }) => {
     return {
       left: `${5 + r1 * 90}%`,
       top: `${8 + r2 * 84}%`,
-      size: 6 + r3 * 22,
+      size: 5 + r3 * 14,
       color: palette[i % palette.length],
       rotate: r1 * 360,
     };
@@ -200,7 +199,7 @@ const FloatingSpecks = ({ palette }: { palette: string[] }) => {
           width={s.size}
           height={s.size}
           viewBox="0 0 20 20"
-          className="absolute mix-blend-multiply opacity-70"
+          className="absolute mix-blend-multiply opacity-60"
           style={{ left: s.left, top: s.top, transform: `rotate(${s.rotate}deg)` }}
         >
           <circle cx="10" cy="10" r="7" fill={s.color} filter="url(#thick-paint)" />
@@ -210,49 +209,59 @@ const FloatingSpecks = ({ palette }: { palette: string[] }) => {
   );
 };
 
-/* ---------- Light halo: soft radiating sun ---------- */
-const SunHalo = ({ color, position }: { color: string; position: string }) => (
+/* ---------- Modern decorative grid (faint, editorial feel) ---------- */
+const ModernGrid = () => (
   <div
     aria-hidden
-    className="pointer-events-none absolute z-[1] mix-blend-screen opacity-45"
+    className="pointer-events-none absolute inset-0 z-[1] opacity-[0.07]"
     style={{
-      ...JSON.parse(position),
-      width: "38vw",
-      height: "38vw",
-      maxWidth: 520,
-      maxHeight: 520,
-      background: `radial-gradient(circle, ${color} 0%, transparent 65%)`,
-      filter: "blur(8px)",
+      backgroundImage:
+        "linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)",
+      backgroundSize: "80px 80px",
     }}
   />
 );
 
-/* ---------- Drifting swirl strokes ---------- */
-const SwirlStroke = ({
-  color,
-  className,
-  rotate = 0,
-}: {
-  color: string;
-  className: string;
-  rotate?: number;
-}) => (
-  <svg
-    viewBox="0 0 400 200"
-    className={`absolute pointer-events-none mix-blend-overlay opacity-50 ${className}`}
-    style={{ transform: `rotate(${rotate}deg)` }}
+/* ---------- Vertical ticker bar on the side ---------- */
+const SideTicker = ({ text, accent }: { text: string; accent: string }) => (
+  <div
     aria-hidden
+    className="pointer-events-none absolute right-3 md:right-6 top-1/2 -translate-y-1/2 z-[2] hidden md:flex items-center gap-3"
+    style={{ writingMode: "vertical-rl" }}
   >
-    <path
-      d="M10 100 C 80 20, 180 180, 260 100 S 380 30, 395 110"
-      stroke={color}
-      strokeWidth="14"
-      fill="none"
-      strokeLinecap="round"
-      filter="url(#oil-paint)"
-    />
-  </svg>
+    <div className="h-24 w-px" style={{ background: accent, opacity: 0.5 }} />
+    <span
+      className="text-[10px] tracking-[0.5em] uppercase font-mono"
+      style={{ color: accent, opacity: 0.6 }}
+    >
+      {text}
+    </span>
+    <div className="h-24 w-px" style={{ background: accent, opacity: 0.5 }} />
+  </div>
 );
+
+/* ---------- Corner crosshair markers (editorial / print feel) ---------- */
+const CornerMarkers = ({ color }: { color: string }) => {
+  const Mark = ({ className }: { className: string }) => (
+    <div className={`absolute w-6 h-6 ${className}`} aria-hidden>
+      <div className="absolute inset-0 border-l border-t" style={{ borderColor: color, opacity: 0.4 }} />
+    </div>
+  );
+  return (
+    <>
+      <Mark className="top-4 left-4" />
+      <div className="absolute top-4 right-4 w-6 h-6" aria-hidden>
+        <div className="absolute inset-0 border-r border-t" style={{ borderColor: color, opacity: 0.4 }} />
+      </div>
+      <div className="absolute bottom-4 left-4 w-6 h-6" aria-hidden>
+        <div className="absolute inset-0 border-l border-b" style={{ borderColor: color, opacity: 0.4 }} />
+      </div>
+      <div className="absolute bottom-4 right-4 w-6 h-6" aria-hidden>
+        <div className="absolute inset-0 border-r border-b" style={{ borderColor: color, opacity: 0.4 }} />
+      </div>
+    </>
+  );
+};
 
 /* ---------- Container preset for color pages ---------- */
 export const ColorPageShell = ({
@@ -260,26 +269,23 @@ export const ColorPageShell = ({
   bg,
   decorPalette,
   haloColor,
+  tickerText = "ASTRID · MORE · 2025",
 }: {
   children: React.ReactNode;
   bg: string;
-  /** Accent palette used for floating specks. Falls back to white-ish. */
   decorPalette?: string[];
-  /** Color of the central sun-halo. Defaults to warm white. */
   haloColor?: string;
+  tickerText?: string;
 }) => {
   const palette = decorPalette ?? ["rgba(255,255,255,0.7)", "rgba(255,255,255,0.4)"];
-  const halo = haloColor ?? "rgba(255,245,210,0.55)";
+  const accent = palette[0];
   return (
     <div className="relative min-h-screen overflow-hidden text-white" style={{ background: bg }}>
       <PaintFilters />
       <CanvasGrain />
-      {/* Decorative layer — fills empty space, sits below content */}
-      <SunHalo color={halo} position='{"left":"55%","top":"30%"}' />
-      <SunHalo color={halo} position='{"left":"5%","top":"68%"}' />
-      <SwirlStroke color={palette[0]} className="left-[40%] top-[12%] w-[40%]" rotate={-8} />
-      <SwirlStroke color={palette[1] ?? palette[0]} className="left-[5%] top-[55%] w-[35%]" rotate={6} />
-      <SwirlStroke color={palette[0]} className="right-[2%] bottom-[8%] w-[45%]" rotate={-4} />
+      <ModernGrid />
+      <CornerMarkers color={accent} />
+      <SideTicker text={tickerText} accent={accent} />
       <FloatingSpecks palette={palette} />
       {children}
     </div>
