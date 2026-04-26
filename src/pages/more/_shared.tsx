@@ -141,6 +141,8 @@ export const PaintedImage = ({
   fallbackHint,
   fallbackBg = "#222",
   haloColor = "rgba(255,255,255,0.18)",
+  fit = "contain",
+  backdrop = "rgba(0,0,0,0.18)",
 }: {
   filename: string;
   alt: string;
@@ -149,6 +151,10 @@ export const PaintedImage = ({
   fallbackBg?: string;
   /** Soft glow color around the image — should match the page accent */
   haloColor?: string;
+  /** "contain" preserves the full photo (default). "cover" fills the frame and may crop. */
+  fit?: "contain" | "cover";
+  /** Background behind the image when using "contain" so empty letterbox area looks intentional. */
+  backdrop?: string;
 }) => {
   const src = getAsset(filename);
   return (
@@ -156,13 +162,14 @@ export const PaintedImage = ({
       className={`painted-image-host overflow-hidden rounded-2xl ${className}`}
       style={{
         boxShadow: `0 24px 60px -12px ${haloColor}, 0 8px 24px rgba(0,0,0,0.35)`,
+        background: fit === "contain" ? backdrop : undefined,
       }}
     >
       {src ? (
         <img
           src={src}
           alt={alt}
-          className="w-full h-full object-cover"
+          className={`w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"}`}
         />
       ) : (
         <div
