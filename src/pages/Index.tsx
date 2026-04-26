@@ -391,22 +391,34 @@ const Index = () => {
           <Reveal delay={150}>
             <ProductCard
               eyebrow="社群 / 工作坊"
-              title="AI 学习社群组织者 · 多元文化工作坊"
-              sub="把 AI 与人文连起来，让学习真正落地为行动。"
+              title="大湾区 AI 共创社群"
+              sub="立足大湾区，聚焦 AI 共创、女性创业与多元文化交流，线上线下双轨运作。"
               secondaryCta={{ label: "了解更多", href: "#" }}
               className="pb-12 h-full"
             >
-              <div className="mt-8 px-8 max-w-md mx-auto text-left space-y-3">
-                {[
-                  "AI 共学计划：每月一个落地主题",
-                  "多元文化对谈：技术与人文的交汇",
-                  "从知识到行动：案例拆解 + 实操",
-                ].map((line, i) => (
-                  <div key={i} className="flex items-baseline gap-3">
-                    <span className="text-[12px] text-muted-foreground tabular-nums">0{i + 1}</span>
-                    <span className="text-[15px] text-foreground">{line}</span>
-                  </div>
-                ))}
+              <div className="mt-8 px-8 max-w-md mx-auto text-left">
+                <div className="flex flex-wrap gap-2 justify-center mb-5">
+                  {["AI 共创", "女性创业", "文化交流", "线上 + 线下"].map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-full bg-[hsl(0_0%_96%)] px-3.5 py-1.5 text-[13px] text-foreground"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                <div className="space-y-3">
+                  {[
+                    "深圳 / 广州 / 香港 线下沙龙与工作坊",
+                    "线上共学社群：每月一个 AI 落地主题",
+                    "女性创业者互助 × 多元文化对谈",
+                  ].map((line, i) => (
+                    <div key={i} className="flex items-baseline gap-3">
+                      <span className="text-[12px] text-muted-foreground tabular-nums">0{i + 1}</span>
+                      <span className="text-[15px] text-foreground">{line}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </ProductCard>
           </Reveal>
