@@ -133,7 +133,7 @@ export const PaintBackButton = ({ accent }: { accent: string }) => (
   </Link>
 );
 
-/* ---------- Image with feathered painterly edge that melts into the background ---------- */
+/* ---------- Image: clean, modern, with subtle accent shadow ---------- */
 export const PaintedImage = ({
   filename,
   alt,
@@ -147,16 +147,15 @@ export const PaintedImage = ({
   className?: string;
   fallbackHint: string;
   fallbackBg?: string;
-  /** Soft glow color around the image — should match the page accent for max blending */
+  /** Soft glow color around the image — should match the page accent */
   haloColor?: string;
 }) => {
   const src = getAsset(filename);
   return (
     <div
-      className={`painted-image-host ${className}`}
+      className={`painted-image-host overflow-hidden rounded-2xl ${className}`}
       style={{
-        // Soft outer halo — image looks like it bleeds into the background paint
-        filter: `drop-shadow(0 0 32px ${haloColor}) drop-shadow(0 12px 28px rgba(0,0,0,0.25))`,
+        boxShadow: `0 24px 60px -12px ${haloColor}, 0 8px 24px rgba(0,0,0,0.35)`,
       }}
     >
       {src ? (
@@ -164,14 +163,6 @@ export const PaintedImage = ({
           src={src}
           alt={alt}
           className="w-full h-full object-cover"
-          style={{
-            // Feathered, irregular edge — no hard rectangle
-            WebkitMaskImage:
-              "radial-gradient(ellipse 58% 62% at 50% 50%, #000 62%, rgba(0,0,0,0.85) 78%, rgba(0,0,0,0.35) 92%, transparent 100%)",
-            maskImage:
-              "radial-gradient(ellipse 58% 62% at 50% 50%, #000 62%, rgba(0,0,0,0.85) 78%, rgba(0,0,0,0.35) 92%, transparent 100%)",
-            filter: "url(#soft-paint-edge) saturate(1.05) contrast(1.02)",
-          }}
         />
       ) : (
         <div
