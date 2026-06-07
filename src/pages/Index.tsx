@@ -479,13 +479,32 @@ const Index = () => {
                 </div>
                 <div className="space-y-3">
                   {[
-                    "跳海脱口秀 · 各大活动路演",
-                    "周周黑客松 开放麦嘉宾",
-                    "小红书 / 视频号博主：As 的每一天",
-                  ].map((line, i) => (
+                    { text: "跳海脱口秀 · 各大活动路演" },
+                    { text: "周周黑客松 开放麦嘉宾" },
+                    {
+                      text: "小红书 / 视频号博主：As 的每一天",
+                      href: "http://xhslink.com/o/14kFZFneKq2",
+                      linkLabel: "点击查看小红书 ›",
+                    },
+                  ].map((item, i) => (
                     <div key={i} className="flex items-baseline gap-3">
                       <span className="text-[12px] text-muted-foreground tabular-nums">0{i + 1}</span>
-                      <span className="text-[15px] text-foreground">{line}</span>
+                      <span className="text-[15px] text-foreground">
+                        {item.text}
+                        {item.href && (
+                          <>
+                            {" "}
+                            <a
+                              href={item.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-[hsl(var(--apple-blue))] hover:underline"
+                            >
+                              {item.linkLabel}
+                            </a>
+                          </>
+                        )}
+                      </span>
                     </div>
                   ))}
                 </div>
