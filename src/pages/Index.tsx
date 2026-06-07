@@ -158,6 +158,7 @@ const FocusVisual = () => {
     { label: "AI 与女性社群", desc: "AI 工具如何赋能女性创造者" },
     { label: "新媒体培训", desc: "持续学习内容策略与表达" },
     { label: "自然与人", desc: "走到自然里，慢下来" },
+    { label: "和平主义", desc: "相信温柔与对话的力量" },
   ];
   return (
     <div className="mt-10 px-8 pb-12 max-w-md mx-auto text-left space-y-5">
