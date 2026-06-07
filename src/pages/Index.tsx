@@ -423,7 +423,15 @@ const Index = () => {
                 </div>
                 <div className="mt-5 pt-4 border-t border-border/60 text-center">
                   <div className="text-[12px] text-muted-foreground mb-1">公众号</div>
-                  <div className="text-[15px] font-medium text-foreground tracking-wide">0xHerstory</div>
+                  <a
+                    href="https://mp.weixin.qq.com/s/py8EPSIYjLXQ7ryk6Auafw"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-[15px] font-medium text-[hsl(var(--apple-blue))] tracking-wide hover:underline"
+                  >
+                    0xHerstory <span aria-hidden>›</span>
+                  </a>
+                  <div className="text-[12px] text-muted-foreground mt-1">点击查看公众号文章</div>
                 </div>
               </div>
             </ProductCard>
