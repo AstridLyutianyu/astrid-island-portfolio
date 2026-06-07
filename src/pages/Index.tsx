@@ -24,7 +24,7 @@ const Reveal = ({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
     <div
       ref={ref}
       style={{ transitionDelay: `${delay}ms` }}
-      className={`transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+      className={`h-full transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
         visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
       }`}
     >
@@ -63,7 +63,7 @@ const ProductCard = ({
   return (
     <article
       id={id}
-      className={`relative overflow-hidden rounded-[18px] ${
+      className={`relative overflow-hidden rounded-[18px] flex flex-col ${
         isDark ? "bg-[hsl(var(--surface-dark))]" : "bg-white"
       } ${className}`}
     >
@@ -116,7 +116,7 @@ const ProductCard = ({
           </div>
         )}
       </div>
-      {children}
+      <div className="flex-1 flex flex-col justify-center">{children}</div>
     </article>
   );
 };
@@ -158,6 +158,7 @@ const FocusVisual = () => {
     { label: "AI 与女性社群", desc: "AI 工具如何赋能女性创造者" },
     { label: "新媒体培训", desc: "持续学习内容策略与表达" },
     { label: "自然与人", desc: "走到自然里，慢下来" },
+    { label: "和平主义", desc: "相信温柔与对话的力量" },
   ];
   return (
     <div className="mt-10 px-8 pb-12 max-w-md mx-auto text-left space-y-5">
