@@ -63,7 +63,7 @@ const ProductCard = ({
   return (
     <article
       id={id}
-      className={`relative overflow-hidden rounded-[18px] ${
+      className={`relative overflow-hidden rounded-[18px] flex flex-col ${
         isDark ? "bg-[hsl(var(--surface-dark))]" : "bg-white"
       } ${className}`}
     >
@@ -116,7 +116,7 @@ const ProductCard = ({
           </div>
         )}
       </div>
-      {children}
+      <div className="flex-1 flex flex-col justify-center">{children}</div>
     </article>
   );
 };
