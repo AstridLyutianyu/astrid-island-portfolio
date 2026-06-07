@@ -135,7 +135,7 @@ const PortraitVisual = () => (
 );
 
 const SkillsVisual = () => {
-  const skills = ["运营管理", "社群运营", "新媒体", "AI 应用", "内容策划", "项目协作"];
+  const skills = ["运营管理", "社群运营", "新媒体", "AI 应用", "内容策划", "项目协作", "AIGC 内容创作", "市场营销"];
   return (
     <div className="mt-10 px-6 pb-14">
       <div className="flex flex-wrap items-center justify-center gap-2.5">
@@ -398,7 +398,7 @@ const Index = () => {
             >
               <div className="mt-8 px-8 max-w-md mx-auto text-left">
                 <div className="flex flex-wrap gap-2 justify-center mb-5">
-                  {["AI 共创", "女性创业", "文化交流", "线上 + 线下"].map((t) => (
+                  {["Herstory 大湾区", "AI 共创", "女性创业", "文化交流", "线上 + 线下"].map((t) => (
                     <span
                       key={t}
                       className="rounded-full bg-[hsl(0_0%_96%)] px-3.5 py-1.5 text-[13px] text-foreground"
@@ -409,7 +409,8 @@ const Index = () => {
                 </div>
                 <div className="space-y-3">
                   {[
-                    "深圳 / 广州 / 香港 线下沙龙与工作坊",
+                    "Herstory 大湾区活动负责人 · 社群 5000+ 成员",
+                    "每周 1 次线下活动 · 深圳 / 广州 / 香港",
                     "线上共学社群：每月一个 AI 落地主题",
                     "女性创业者互助 × 多元文化对谈",
                   ].map((line, i) => (
@@ -418,6 +419,10 @@ const Index = () => {
                       <span className="text-[15px] text-foreground">{line}</span>
                     </div>
                   ))}
+                </div>
+                <div className="mt-5 pt-4 border-t border-border/60 text-center">
+                  <div className="text-[12px] text-muted-foreground mb-1">公众号</div>
+                  <div className="text-[15px] font-medium text-foreground tracking-wide">0xHerstory</div>
                 </div>
               </div>
             </ProductCard>
@@ -441,6 +446,40 @@ const Index = () => {
                     <span className="text-[15px] text-foreground">{line}</span>
                   </div>
                 ))}
+              </div>
+            </ProductCard>
+          </Reveal>
+          <Reveal delay={250}>
+            <ProductCard
+              eyebrow="脱口秀 / 内容创作"
+              title="舞台上的另一面。"
+              sub="在线下脱口秀和线上博主之间切换，用幽默和真诚记录每一天。"
+              secondaryCta={{ label: "了解更多", href: "#" }}
+              className="pb-12 h-full"
+            >
+              <div className="mt-8 px-8 max-w-md mx-auto text-left">
+                <div className="flex flex-wrap gap-2 justify-center mb-5">
+                  {["跳海脱口秀", "活动路演", "开放麦嘉宾", "小红书博主", "视频号博主"].map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-full bg-[hsl(0_0%_96%)] px-3.5 py-1.5 text-[13px] text-foreground"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                <div className="space-y-3">
+                  {[
+                    "跳海脱口秀 · 各大活动路演",
+                    "周周黑客松 开放麦嘉宾",
+                    "小红书 / 视频号博主：As 的每一天",
+                  ].map((line, i) => (
+                    <div key={i} className="flex items-baseline gap-3">
+                      <span className="text-[12px] text-muted-foreground tabular-nums">0{i + 1}</span>
+                      <span className="text-[15px] text-foreground">{line}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </ProductCard>
           </Reveal>
