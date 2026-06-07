@@ -446,8 +446,8 @@ const Index = () => {
             >
               <div className="mt-8 px-8 max-w-md mx-auto text-left space-y-3">
                 {[
-                  "商家运营 · 效果营销 + 割草变现 · 咨询 299/h",
-                  "新媒体培训 · 个人项目账号陪跑 · 166/h",
+                  "商家运营 · 效果营销 + 割草变现 · 咨询",
+                  "新媒体培训 · 个人项目账号陪跑",
                   "女性商业公益互助",
                 ].map((line, i) => (
                   <div key={i} className="flex items-baseline gap-3">
