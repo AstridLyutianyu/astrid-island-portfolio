@@ -158,7 +158,8 @@ const FocusVisual = () => {
     { label: "AI 与女性社群", desc: "AI 工具如何赋能女性创造者" },
     { label: "新媒体培训", desc: "持续学习内容策略与表达" },
     { label: "自然与人", desc: "走到自然里，慢下来" },
-    { label: "和平主义", desc: "相信温柔与对话的力量" },
+    { label: "黑客松", desc: "她启全国黑客松赛道一等奖获得者" },
+    { label: "和平主义", desc: "AMANI NAKUPENDA" },
   ];
   return (
     <div className="mt-10 px-8 pb-12 max-w-md mx-auto text-left space-y-5">
@@ -311,7 +312,7 @@ const Index = () => {
               id="now"
               eyebrow="Now"
               title="我在持续关注的事。"
-              sub="三个让我保持新鲜感、也塑造看世界方式的方向。"
+              sub="五个让我保持新鲜感、也塑造看世界方式的方向。"
               secondaryCta={{ label: "了解更多", href: "#about" }}
               className="pb-12 h-full"
             >
