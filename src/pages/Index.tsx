@@ -228,7 +228,7 @@ const Index = () => {
       {/* Top nav — apple style: thin, centered links, glass */}
       <header className="fixed top-0 inset-x-0 z-50 bg-[hsl(0_0%_100%/0.8)] backdrop-blur-xl border-b border-border/60">
         <nav className="max-w-[1024px] mx-auto h-11 px-6 flex items-center justify-between text-[12px] text-foreground/80">
-          <a href="/more" className="font-medium hover:text-foreground transition-quick">Astrid 鱼仔</a>
+          <a href="#hero" className="font-medium hover:text-foreground transition-quick">Astrid 鱼仔</a>
           <div className="hidden sm:flex items-center gap-6">
             <a href="#about" className="hover:text-foreground transition-quick">关于</a>
             <a href="#now" className="hover:text-foreground transition-quick">在做的事</a>
